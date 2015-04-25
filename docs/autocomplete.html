@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Autocomplete api</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+	    <link rel="stylesheet" href="../css/normalize.css">
+	    <link rel="stylesheet" href="../css/main.css">
+	    <link rel="stylesheet" href="../css/960.css">
+	    <link rel="stylesheet" href="../css/base.css">
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container_12">
+            <h1><a class="index" href="#">Autocomplete</a> 
+                <span>API</span>
+                <a href="../demo/autocomplete/ac.html">demo>></a>
+            </h1>
+            <hr>
+        </div>
+        <div class="container_12">
+            <h2>一、属性参数</h2>
+            <table class="table">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>target</td>
+                    <td><em>null</em>, string, dom node</td>
+                    <td>必传，ID</td>
+                </tr>
+                <tr>
+                    <td>appendTo</td>
+                    <td><em>null</em>, dom node</td>
+                    <td>搜索结果弹出面板父级元素，模式在body下</td>
+                </tr>
+                <tr>
+                    <td>autoFocus</td>
+                    <td><em>false</em>, true</td>
+                    <td>自动选择第一个搜索结果</td>
+                </tr>
+                <tr>
+                    <td>delay</td>
+                    <td><em>300</em>, number</td>
+                    <td>输入框值改变延迟查询时间,越小越灵敏,但性能也越差</td>
+                </tr>
+                <tr>
+                    <td>minLength</td>
+                    <td><em>1</em>, number</td>
+                    <td>查询的最小长度值(小于次长度不查询)</td>
+                </tr>
+                <tr>
+                    <td>source</td>
+                    <td><em>null</em>, object, array, string, function(request, response){}</td>
+                    <td>搜索的数据源,支持对象，数组，ajax url, 函数</td>
+                </tr>
+                <tr>
+                    <td>sourceParam</td>
+                    <td><em>{}</em>, json</td>
+                    <td>查询的静态参数</td>
+                </tr>
+                <tr>
+                    <td>method</td>
+                    <td><em>'get'</em>, 'post'</td>
+                    <td>ajax请求 http 提交类型,get还是post</td>
+                </tr>
+                <tr>
+                    <td>zIndex</td>
+                    <td><em>1000</em>, number</td>
+                    <td>弹出面板的z-index值</td>
+                </tr>
+
+                <tr>
+                    <td>position</td>
+                    <td>object</td>
+                    <td>弹出层的位置,来自jqueryui position.js插件</td>
+                </tr>
+                <tr>
+                    <td>listItemFormatter</td>
+                    <td><em>null</em>, function(item, $itemBody){}</td>
+                    <td>查询结果自定义每条显示格式或样式，个性化定制显示数据。入参为行记录和行的父节点</td>
+                </tr>
+                <tr>
+                    <td>enableAutoFill</td>
+                    <td><em>false</em>, true</td>
+                    <td>是否在失去焦点时，自动填充选择的记录</td>
+                </tr>
+                <tr>
+                    <td>noResultsMessage</td>
+                    <td>string</td>
+                    <td>没有查询到记录的提示信息，自定义</td>
+                </tr>
+                <tr>
+                    <td>selectMode</td>
+                    <td><em>false</em>, true</td>
+                    <td>选择模式，失去焦点会判断输入的值可在数据源中，如果不在则自动清空</td>
+                </tr>
+                <tr>
+                    <td>resultsLocation</td>
+                    <td><em>null</em>string</td>
+                    <td>查询结果集数组的位置。如返回{a : 'aaa', b : {c : '', d :[...]}}配置'b.d',当前搜索结果为d对应的数组，可灵活配置结果集。
+                    </td>
+                </tr>
+                <tr>
+                    <td>labelName</td>
+                    <td><em>'label'</em>, string</td>
+                    <td>结果元素显示的属性名</td>
+                </tr>
+                <tr>
+                    <td>valueName</td>
+                    <td><em>'value'</em>, string</td>
+                    <td>结果元素的值</td>
+                </tr>
+                <tr>
+                    <td>hotSource</td>
+                    <td><em>null</em>, object, array, string, function(request, response){}</td>
+                    <td>推荐面板的数据源，格式同source</td>
+                </tr>
+                <tr>
+                    <td>hotWidth</td>
+                    <td><em>'auto'</em>, number</td>
+                    <td>推荐面板宽度</td>
+                </tr>
+                <tr>
+                    <td>hotMaxWidth</td>
+                    <td><em>320</em>, number</td>
+                    <td>推荐面板最大宽度</td>
+                </tr>
+                <tr>
+                    <td>hotMode</td>
+                    <td><em>'table'</em>, string, object</td>
+                    <td>推荐面板插件,如果为string会自动系在plugins对应的插件文件,目前支持'table', 'tab'</td>
+                </tr>
+                <tr>
+                    <td>hotOptions</td>
+                    <td><em>{}</em>, object</td>
+                    <td>推荐面板的参数，见具体插件，随具体插件而定</td>
+                </tr>
+                <tr>
+                    <td>change</td>
+                    <td><em>null</em>, function</td>
+                    <td>输入值改变回调函数</td>
+                </tr>
+                <tr>
+                    <td>close</td>
+                    <td><em>null</em>, function</td>
+                    <td>显示面板关闭回调</td>
+                </tr>
+                <tr>
+                    <td>select</td>
+                    <td><em>null</em>, function</td>
+                    <td>选择一条记录回调</td>
+                </tr>
+            </tbody></table>
+
+
+            <h2>二、方法</h2>
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>showResultsPanel</td>
+                    <td></td>
+                    <td>显示查询结果集面板</td>
+                </tr>
+                <tr>
+                    <td>showHotPanel</td>
+                    <td></td>
+                    <td>显示推荐面板</td>
+                </tr>
+                <tr>
+                    <td>showMessage</td>
+                    <td>msg:string</td>
+                    <td>显示提示信息</td>
+                </tr>
+                <tr>
+                    <td>hideHotPanel</td>
+                    <td></td>
+                    <td>隐藏推荐面板</td>
+                </tr>
+
+                <tr>
+                    <td>hideResultsPanel</td>
+                    <td></td>
+                    <td>隐藏结果集面板</td>
+                </tr>
+                <tr>
+                    <td>hide</td>
+                    <td></td>
+                    <td>隐藏面板</td>
+                </tr>
+                <tr>
+                    <td>labelValue</td>
+                    <td></td>
+                    <td>获取搜索框中的值</td>
+                </tr>
+                <tr>
+                    <td>value</td>
+                    <td><em>null</em>, value</td>
+                    <td>获取或设置值</td>
+                </tr>
+                <tr>
+                    <td>search</td>
+                    <td>msg:string</td>
+                    <td>查询指定字符串</td>
+                </tr>
+                <tr>
+                    <td>setOptions</td>
+                    <td>object</td>
+                    <td>设置属性</td>
+                </tr>
+            </tbody></table>
+        </div>
+    </body>
+</html>

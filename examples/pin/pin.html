@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>PageNavigator组件-仿天猫商品快速到达</title>
+</head>
+<body>
+<style type="text/css">
+    a,a:visited{
+        color:blue;
+        text-decoration: none;
+    }
+    body{
+        padding:15px;
+        font-size:12px;
+    }
+    *{margin:0;padding:0;zoom:1;line-height: 1.67}
+    .box{
+        height:400px;
+        border:1px solid #ccc;
+        margin:10px 0;
+        font-size:50px;
+        color:#ccc;
+        line-height: 1;
+    }
+    .header{
+        background: #e9e7e4;
+        color:ba9;
+        height: 28px;
+        line-height: 28px;
+    }
+    .footer{
+        height:50px;
+    }
+    ul.sib-page-nav{
+        /* background: #dedede url("images/valign.png") repeat-y 18px 0px; */
+        border:none;
+        width:140px;
+        padding:0px;
+        border:1px solid #ccc;
+        border-top:2px solid red;
+    }
+    .sib-page-nav li a{
+        /* background: url("images/arror.png") no-repeat; */
+        background-position: 8px -118px;
+        padding:0px 0px 0px 36px;
+        margin:15px 0px;
+        text-align: left;
+        color:#999;
+    }
+    ul.sib-page-nav li a:hover, ul.sib-page-nav li a.selected{
+        background: url("images/arror.png") no-repeat;
+        background-position: 8px 2px;
+        color:#c00;
+    }
+</style>
+<h1 style="font-size:22px;">
+    Pin
+</h1>
+<div id="pinContainer" style="height: 900px;border:1px solid red;">
+    <ul class="sib-page-nav" id="myNav">
+	    <!-- <li><a href="#">回到顶部（锚点）</a></li> -->
+	    <li class="header">快速直达</li>
+	    <li><a href="#box1">天猫电器城服务</a></li>
+	    <li><a href="#box2">优惠信息</a></li>
+	    <li><a href="#box3">关联推荐</a></li>
+	    <li><a href="#box4">商品参数</a></li>
+	    <li><a href="#box5">使用建议</a></li>
+	    <li><a href="#box6">店铺服务详情</a></li>
+	    <li><a href="#box7">常见问题</a></li>
+	    <li class="footer"></li>
+	</ul>
+</div>
+<div style="width:100%;height:900px;background: #aaa"></div>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script>
+
+require(['sib/core/1.0/jQuery+', 'sib/pin/1.0/Pin'], function($, Pin){
+    var p = new Pin({
+        target : '#myNav',
+        container : '#pinContainer',
+        animate : true,
+        duration : 500
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Pagenavigator api</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+	    <link rel="stylesheet" href="../css/normalize.css">
+	    <link rel="stylesheet" href="../css/main.css">
+	    <link rel="stylesheet" href="../css/960.css">
+	    <link rel="stylesheet" href="../css/base.css">
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container_12">
+            <h1><a class="index" href="#">Pagenavigator</a> 
+                <span>API</span>
+                <a href="../demo/pagenavigator/pn.html">demo>></a>
+            </h1>
+            <hr>
+        </div>
+        <div class="container_12">
+            <h2>一、属性参数</h2>
+            <table class="table">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>target</td>
+                    <td><em>null</em>, string, dom node</td>
+                    <td>必传，导航菜单的id</td>
+                </tr>
+                <tr>
+                    <td>navSelector</td>
+                    <td><em>'li a'</em>, string</td>
+                    <td>target元素下的选择器，导航菜单所有子元素</td>
+                </tr>
+                <tr>
+                    <td>navSelectedClass</td>
+                    <td><em>'selected'</em>, string</td>
+                    <td>选中样式</td>
+                </tr>
+                <tr>
+                    <td>enableReverse</td>
+                    <td><em>true</em>, false</td>
+                    <td>反向控制,滚动页面时，自动高亮选中对应的导航链接</td>
+                </tr>
+                <tr>
+                    <td>interval</td>
+                    <td><em>400</em>, number</td>
+                    <td>页面滚动延迟计算时间</td>
+                </tr>
+                <tr>
+                    <td>threshold</td>
+                    <td><em>0</em>, number</td>
+                    <td>显示导航的临界高度,页面scrollTop小于这个高度导航自动隐藏</td>
+                </tr>
+                <tr>
+                    <td>duration</td>
+                    <td><em>800</em>, number</td>
+                    <td>页面滚动时间</td>
+                </tr>
+                <tr>
+                    <td>easing</td>
+                    <td><em>'swing'</em>, string</td>
+                    <td>滚动动画效果</td>
+                </tr>
+                <tr>
+                    <td>scrollbegin</td>
+                    <td><em>null</em>, function</td>
+                    <td>滚动开始回调</td>
+                </tr>
+                <tr>
+                    <td>scrollend</td>
+                    <td><em>null</em>function</td>
+                    <td>滚动结束回调</td>
+                </tr>
+            </tbody></table>
+
+            <h2>二、方法</h2>
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td colspan="3">无</td>
+                </tr>
+            </tbody></table>
+        </div>
+    </body>
+</html>

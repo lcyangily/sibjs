@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://miemiedev.github.io/mmGrid/examples/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Autocomplete demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/960.css">
+    <link rel="stylesheet" href="../../css/base.css">
+</head>
+<body>
+<div class="container_12">
+    <h1>
+		<a class="index" href="#">Autocomplete</a>
+		<span>Demo</span>
+		<a href="../../api/autocomplete.html">api>></a>
+	</h1>
+    <hr>
+</div>
+<div class="container_12">
+    <h2>一、介绍</h2>
+    <p>AutoComplete控件提供用户在文本框输入前几个字母或汉字，能从数组或后台服务器里将匹配的数据提示给用户，供用户选择，方便快捷。
+    本组件可灵活配置，可轻松开发出类似于baidu搜索提示，淘宝网上的城市选择，邮件后缀自动填充等常用功能。
+    </p>
+    <p>主要功能包括：
+        <ul>
+            <li>1、数据支持本地对象（对象、数组、自定义函数）和远程数据（JSON）。</li>
+            <li>2、支持推荐（热门）面板。如：输入框获取焦点弹出推荐或常用内容等</li>
+            <li>3、支持选择模式。(类似于select组件)</li>
+            <li>4、灵活的插件开发,如推荐面板现支持table和tab插件,很容易的开发插件</li>
+            <li>5、灵活的数据格式解析。后台返回数据无需按照本组件返回固定格式，可任意格式，前端配置指定路径即可。</li>
+            <li>6、支持键盘操作。（推荐面板不支持键盘）</li>
+        </ul>
+    </p>
+    <hr>
+    <h2>二、基本示例</h2>
+    <p>
+        AutoComplete支持两种数据加载方式：本地数据和远程AJAX数据。输入内容自动提示,如输入a.
+    </p>
+
+    <div class="grid_6">
+        <h3>例 1：使用本地对象加载数据，输入字母'a'试试</h3>
+		<div style="width: auto; height: 100px;">
+			<input type="text" class="txt" id="simpleAc" />
+		</div>
+        <p class="well">
+            以客户端数据为数据源。参数<em>source</em>，类型可以是对象|数组|字符串|函数。如果数据源为对象，则使用<em>resultsLocation</em>选项指向对象内的数组字段为数据源。
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例 2：使用AJAX加载数据（<span class="cred">例子没有后台服务器，总是请求同一文件）</span></h3>
+		<div  style="width: auto; height: 100px;">
+			<input type="text" class="txt" id="simpleAjaxAc" />
+		</div>
+        <p class="well">
+            AJAX数据为数据源。参数<em>source</em>设置为url字符串，返回数据为json格式即可，可以是对象或数组。如果返回数据为对象，则使用<em>resultsLocation</em>选项标记对象内的数组字段为数据源。
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例 3：自定义搜索结果显示</h3>
+		<div  style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="formatter" />
+		</div>
+		<p class="well">
+            自定义搜索结构格式，设置参数<em>listItemFormatter</em>函数即可。
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例 4：自动选择第一条记录</h3>
+		<div style="width: auto; height: 100px;">
+		    <input type="text" class="txt" id="autoFocus" />
+        </div>
+        <p class="well">
+            设置参数<em>autoFocus</em>为true开启自动选中第一行模式。
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例 5：选择模式,只能输入已经存在的值,如果没有,自动清空</h3>
+        <div  style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="selectMode" />
+        </div>
+        <p class="well">
+            设置参数<em>selectMode</em>为true开启选择模式。
+        </p>
+    </div>
+    <div class="grid_6">
+        <!-- <h3>例 5：自动选择第一条记录</h3>
+        <div style="width: auto; height: 280px;">
+            <input type="text" class="txt" id="autoFocus" />
+        </div>
+        <span style="font-size: 12px;">* 此示例无后端处理程序，请查看请求的url参数</span> -->
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例 6：插件机制：table面板(选择模式已经演示了)</h3>
+        <div  style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="pluginTable" />
+        </div>
+        <p class="well">
+            插件选项为<em>hotMode</em>。默认是table插件,没有输入任何内容或者input获取焦点会弹出热门或者所有可选择元素。面板内容可配置
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例 7：插件机制：tab面板</h3>
+        <div style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="pluginTab" />
+        </div>
+        <p class="well">
+            <em>hotMode</em>设置为tab即可,hot数据源为<em>hotSource</em>属性
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_12" style="height:400px;">
+        <h3>例 8：自定义函数为数据源(仿邮件自动提示)</h3>
+        <div style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="emailHint" />
+        </div>
+        <p class="well">
+            <em>source</em>为自定义函数
+        </p>
+    </div>
+</div>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script type="text/javascript" src="./data.js"></script>
+<script type="text/javascript">
+    
+require(['sib/core/1.0/jQuery+','sib/autocomplete/1.0/Autocomplete'], function($, Autocomplete){
+
+    var simpleAc = new Autocomplete({
+	    target : '#simpleAc',
+	    source : arr
+	});
+	
+	var simpleAjaxAc = new Autocomplete({
+	    target : '#simpleAjaxAc',
+	    source : './ac.json',
+	    resultsLocation : 'test.provices',
+	    labelName : 'province',
+        valueName : 'code'
+	});
+	
+	//自定义搜索结果
+	var formatter = new Autocomplete({
+	    target : '#formatter',
+	    source : arr,
+	    listItemFormatter : function(item){
+            var term = formatter.state.term;
+            var rt = '<span style="color:red;">' + term + '</span>';
+
+            return $('<span style="float:left">' + item.label.replace(term, rt) + '</span>'+
+                     '<span style="float:right">' + item.value.replace(term, rt) + '</span>');
+        }
+	});
+	//自动选中
+	var autoFocus = new Autocomplete({
+        target : '#autoFocus',
+        source : arr,
+        autoFocus : true,
+        enableAutoFill : true
+    });
+	
+	//SelectMode
+	var selectMode = new Autocomplete({
+        target : '#selectMode',
+        source : mmm,
+        resultsLocation : 'data.provices',
+        labelName : 'province',
+        valueName : 'code',
+        autoFocus : true,
+        enableAutoFill : true,
+        selectMode : true ,
+        //hotSource:arr,
+        hotOptions : {
+            colNum : 4,
+            itemWidth : 80
+        }
+    });
+	
+	//pluginTable
+	var pluginTable = new Autocomplete({
+        target : '#pluginTable',
+        source : mmm,
+        resultsLocation : 'data.provices',
+        labelName : 'province',
+        valueName : 'code',
+        autoFocus : true,
+        enableAutoFill : true,
+        hotSource:arr,
+        hotOptions : {
+            colNum : 4,
+            itemWidth : 80
+        }
+    });
+	
+	var pluginTab = new Autocomplete({
+	    target : '#pluginTab',
+	    source : tabsArr,
+	    //resultsLocation : 'data.provices',
+        //labelName : 'province',
+        //valueName : 'code',
+	    hotSource : tabsTest,
+	    hotMode : 'tab',
+	    hotOptions : {
+	        tabTitle : 'myTitle',
+            resultsLocation : 'myResults'
+	    }
+	});
+	
+	var emailHint = new Autocomplete({
+	    target : '#emailHint',
+	    autoFocus : true,
+	    source : function(request, response){
+	        var results = [];
+	        var emailType = '@zte.com.cn,@taobao.com,@sohu.com,@sina.com,@sina.com.cn,@163.com,@126.com,@qq.com,@gmail.com';
+	        $.each(emailType.split(','), function(i, type){
+	            var term = request.term;
+	            if(term) {
+	                var idx = term.indexOf('@');
+	                if(idx > 0) {
+	                    term = term.substr(0, idx);
+	                }
+	            }
+
+	            var val = term + type;
+	            var item = {
+	                label : val,
+	                value : val
+	            };
+	            results.push(item);
+	        });
+	        response(results, true, request);
+	    }
+	});
+})
+</script>
+</body>
+</html>

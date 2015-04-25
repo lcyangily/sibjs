@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Calendar api</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+	    <link rel="stylesheet" href="../css/normalize.css">
+	    <link rel="stylesheet" href="../css/main.css">
+	    <link rel="stylesheet" href="../css/960.css">
+	    <link rel="stylesheet" href="../css/base.css">
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container_12">
+            <h1><a class="index" href="#">Calendar</a> 
+                <span>API</span>
+                <a href="../demo/calendar/cal.html">demo>></a>
+            </h1>
+            <hr>
+        </div>
+        <div class="container_12">
+            <h2>一、属性参数</h2>
+            <table class="table">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>inlineNode</td>
+                    <td><em>null</em>, dom node, jquery element</td>
+                    <td>不为空为内联模式，嵌入html页面中，为嵌入的父级节点</td>
+                </tr>
+                <tr>
+                    <td>trigger</td>
+                    <td><em>null</em>, dom node, jquery element</td>
+                    <td>非内联模式，触发显示的节点</td>
+                </tr>
+                <tr>
+                    <td>triggerType</td>
+                    <td><em>'click'</em>, string</td>
+                    <td>非内联模式，触发显示的时间名。click、mouseover等</td>
+                </tr>
+                <tr>
+                    <td>lang</td>
+                    <td><em>'en'</em>, string</td>
+                    <td>国际化语言，懒加载，对应i18n文件夹下的资源文件</td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td><em>null</em>, string, moment对象</td>
+                    <td>初始化日期，moment时间对象或满足格式（format指定格式）的字符串</td>
+                </tr>
+                <tr>
+                    <td>format</td>
+                    <td><em>'YYYY-MM-DD'</em>, string</td>
+                    <td>日期格式化</td>
+                </tr>
+                <tr>
+                    <td>range</td>
+                    <td><em>null</em>, [string, string] 或者 [moment, moment]</td>
+                    <td>日历可选择的时间范围，第一个是开始时间第二个是结束时间</td>
+                </tr>
+                <tr>
+                    <td>startDay</td>
+                    <td><em>0</em>, number[0-6]</td>
+                    <td>每周的第一天，默认是从周日开始，可自由选择</td>
+                </tr>
+
+                <tr>
+                    <td>hideOnSelect</td>
+                    <td><em>true</em>, false</td>
+                    <td>选择日期后是否自动隐藏时间面板</td>
+                </tr>
+                <tr>
+                    <td>output</td>
+                    <td><em>null</em>, dom node, jquery element</td>
+                    <td>日期输出到哪里，默认跟trigger同一个元素</td>
+                </tr>
+                <tr>
+                    <td>showOtherMonths</td>
+                    <td><em>true</em>, false</td>
+                    <td>在日期当月是否显示上一月和下一月日期填满空白</td>
+                </tr>
+                <tr>
+                    <td>selectOtherMonths</td>
+                    <td><em>true</em>, false</td>
+                    <td>在日期当月显示的上一月和下一月日期是否可点击</td>
+                </tr>
+                <tr>
+                    <td>showWeek</td>
+                    <td><em>false</em>, true</td>
+                    <td>是否显示周</td>
+                </tr>
+                <tr>
+                    <td>show</td>
+                    <td><em>null</em>,function</td>
+                    <td>显示日历的回调函数</td>
+                </tr>
+                <tr>
+                    <td>hide</td>
+                    <td><em>null</em>, function</td>
+                    <td>隐藏日历的回调函数</td>
+                </tr>
+                <tr>
+                    <td>selectDate</td>
+                    <td><em>null</em>, function</td>
+                    <td>选择日期的回调函数</td>
+                </tr>
+                <tr>
+                    <td>selectMonth</td>
+                    <td><em>null</em>, function</td>
+                    <td>选择月份的回调函数</td>
+                </tr>
+                <tr>
+                    <td>selectYear</td>
+                    <td><em>null</em>, function</td>
+                    <td>选择年份的回调函数</td>
+                </tr>
+            </tbody></table>
+
+
+            <h2>二、方法</h2>
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>show</td>
+                    <td></td>
+                    <td>显示日历</td>
+                </tr>
+                <tr>
+                    <td>hide</td>
+                    <td></td>
+                    <td>隐藏日历</td>
+                </tr>
+                <tr>
+                    <td>output</td>
+                    <td>val : string</td>
+                    <td>输出日期到配置的output节点中,日历的日期或者输入的日期</td>
+                </tr>
+                <tr>
+                    <td>enable</td>
+                    <td></td>
+                    <td>使日期控件可用</td>
+                </tr>
+
+                <tr>
+                    <td>disable</td>
+                    <td></td>
+                    <td>使日期控件无用</td>
+                </tr>
+            </tbody></table>
+        </div>
+    </body>
+</html>

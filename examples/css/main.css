@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+ul,ol,li{list-style:none;padding:0px;margin:0px;list-style-position:outside;}
+.main{margin:10px 20px;}
+.box{
+	border:1px solid #d4d4d4;
+	border-top:1px solid #d4d4d4;
+	border-bottom:1px solid #fff;
+    line-height:12px;
+    position: relative;
+    background: #fff;
+}
+.box .box-h {
+    background: #fff;
+    text-decoration:none;
+    border-bottom:1px solid #d6d6d6;
+    font-size:12px;
+    font-weight:bold;
+    text-indent: 2px;
+}
+.box .box-h-in{
+	margin:1px;
+	padding:0px 10px;
+	line-height:28px;
+	height:28px;
+	background: url("../images/lm_t_bg.png") repeat-x;
+}
+
+.box .box-b{
+	/* line-height: 28px; */
+	border-top:1px solid #fff;
+}
+.my-table{font-size:12px;}
+.my-table .mt-title .icon {
+	/* BORDER: 0px;
+	MARGIN: 0px 2px -2px 1px;
+	width:16px;
+	height:16px; */
+}
+
+.mt-data {
+	width:100%;
+	text-align:center;
+	cellSpacing:0;
+    cellpadding:0;
+    border-collapse:collapse;
+    border-spacing:0;
+    line-height: 28px;
+}
+.mt-data TD {
+	border-bottom:1px solid #dfdfdf;
+	background: #fff;
+}
+
+.mt-data .title td {
+	BACKGROUND: #f1f1f1;
+	font-weight: bold;
+}
+
+.mt-data .even td {
+    background: #f1f1f1;
+}
+
+.box .box-h dl.split-icon-txt{
+    text-indent:2px;
+}
+.box .box-h .icon-l{float: left;}
+.speed-oper{margin:15px}
+.speed-oper dt{text-align: center;width:80px;float:left;position: relative;cursor:pointer;}
+.speed-oper dt .icon-l{position: absolute;left: 50%;margin-left:-16px;}
+.speed-oper dt .txt{margin-top:36px;text-shadow: 0 1px 0 #fff;color: #606060;}
+.speed-oper dt:hover .txt{color:#6299c5;}
+.desc{margin:20px;margin-top:10px;line-height: 28px;}
+.desc .icon{margin:6px 3px 0px 0px;}
+.search{}
+.s-t{position: relative;text-indent: 20px;font-size: 14px;font-weight:600; border-bottom:1px solid #fff;}
+.s-t i.icon{position: absolute;top:0px;left:0px;margin-top:0px;}
+.s-t .s-t-i{border-bottom:1px solid #dfdfdf;line-height: 18px;}
+.s-b{margin:10px 0px;}
+.s-b td{padding:3px 0px;}
+.prop-table{width:100%;margin-top:20px;color:#5f5f5f;text-shadow:0 1px 0 #fff;}
+.prop-table td {height:35px;}

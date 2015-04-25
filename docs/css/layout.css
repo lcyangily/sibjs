@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+/* *{margin:0px auto;} */
+@font-face {
+  font-family: 'Marmelad';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Marmelad'), local('Marmelad-Regular'), url(marmelad.woff) format('woff');
+}
+body .ui-layout-pane {
+	padding: 0px;
+	overflow: visible;
+	border: none;
+}
+body .ui-layout-resizer-west{background: none;}
+body .ui-layout-toggler-west-closed,
+body .ui-layout-toggler-west-open{background: #f60;}
+#leftnav{
+	width:250px;
+	background:#efefef;
+	border-right:1px solid #ccc;
+}
+.logo{
+    background:#377bee;
+    border-right:1px solid #377bee;
+    border-top:3px solid #f60;
+    padding:30px 0px 20px 0px;
+    position: relative;
+    margin-right: -1px;
+    text-align: center;
+    font-family: "Marmelad", "Microsoft YaHei", "Arial", '宋体'; 
+    transition:all 0.25s linear 0s;
+}
+.logo h1,.logo h6{margin:0px;}
+.logo h1 a{
+	text-decoration:none; 
+	color:white;
+	font-size:80px;
+	line-height:50px; 
+	font-family: "Marmelad", "Microsoft YaHei", "Arial", '宋体'; 
+	transition:all 0.25s linear 0s;
+}
+/* .logo h1 a:hover{color: #f60;} */
+.logo h6{color: #eee;font-size:16px;font-family: "Marmelad", "Microsoft YaHei", "Arial", '宋体'; }
+.logo:hover{background:#ccc;border-right:1px solid #ccc;border-top-color:#377bee;}
+.logo:hover h1 a{color:#f60}
+.logo:hover h6{color:#f60;}
+.block-tab{height: 26px;font-size: 12px;font-family: "Microsoft YaHei", "Arial", '宋体';background: url("../images/tabs_bg.png") repeat-x 0px -1px;}
+.block-tab ul{display:block;height:24px;border-bottom:1px solid #ccc;}
+.block-tab li{float:left;height:24px;text-align:center;line-height:24px;font-weight:600;cursor:pointer;display: inline-block;/* border-right:1px solid #ccc; */margin-left:-1px;}
+.block-tab li.selected{position:relative;line-height:22px;z-index:1;color:#0e7bde;border-top:2px solid #f60/* #0e7bde */;border-right:1px solid #ccc;border-left:1px solid #ccc;margin-top:-1px;}
+.self-tab{padding-bottom:2px;background:#efefef;z-index:10000;border-bottom:1px solid #ddd;}
+.self-tab ul{background: url("../images/tabs_bg.png") repeat-x 0px -1px;margin: 0px;padding: 0px;}
+.self-tab ul li{padding:0px 10px;color:#666;}
+.self-tab ul li.selected{background: #efefef;color:#f60;}
+.tab-body ul{list-style: none;outline-style: none;padding:0px;margin:5px;}
+.tab-body ul li {line-height: 30px;border-bottom: 1px dotted #ccc;}
+.tab-body ul li a{display: block;text-indent: 40px;position:relative;text-decoration: none;color:3784bc;transition:all 0.25s linear 0s;}
+.tab-body ul li a:hover{background: #377bee;color:white;}
+.tab-body ul li a.selected{color: #f60;background: none;}
+.tab-body ul li a i{
+	display: block;
+	position: absolute;
+    height:12px;
+    width:12px;
+    left:18px;
+    top:9px;
+    border:none;
+    background: url("../images/circle.png") -34px -17px;
+    font: 0px Arial; 
+    line-height:0;
+}
+    
+.tab-body ul li a:hover i{background: url("../images/circle.png") 0px -17px;}
+.tab-body ul li a.selected i{background: url("../images/circle.png") -119px -17px;}

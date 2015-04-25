@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://miemiedev.github.io/mmGrid/examples/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Calendar demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/960.css">
+    <link rel="stylesheet" href="../../css/base.css">
+</head>
+<body>
+<div class="container_12">
+    <h1>
+		<a class="index" href="#">Calendar</a>
+		<span>Demo</span>
+		<a href="../../api/calendar.html">api>></a>
+	</h1>
+    <hr>
+</div>
+<div class="container_12">
+    <h2>一、介绍</h2>
+    <p>Calendar日期控件提供用户更方便的选择日期，并支持更多的特色功能。
+    </p>
+    <p>主要功能包括：
+        <ul>
+            <li>1、日期的格式化，带周的显示，嵌入页面模式等。</li>
+            <li>2、国际化，动态加载资源（懒加载），一个页面可展示多种语言。</li>
+            <li>3、日期范围选择限制，多个日历的动态关联</li>
+        </ul>
+    </p>
+    <hr>
+    <h2>二、基本示例</h2>
+    <div class="grid_4">
+        <h3>例 1：简单日历</h3>
+		<div style="width: auto; height: 100px;">
+			<input id="simpleCal" class="txt" type='text'  />
+		</div>
+    </div>
+    <div class="grid_4">
+        <h3>例 2：带周显示</span></h3>
+		<div  style="width: auto; height: 100px;">
+			<input id="weekCal" class="txt" type='text'  />
+		</div>
+    </div>
+    <div class="grid_4">
+        <h3>例 3：当月不显示上一月和下一月的日期</span></h3>
+        <div  style="width: auto; height: 100px;">
+            <input id="noOtherMonthCal" class="txt" type='text'  />
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_3">
+        <h3>例 4：国际化DEMO-中文</h3>
+		<div  style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="zhCal" />
+		</div>
+    </div>
+    <div class="grid_3">
+        <h3>例 5：国际化DEMO-法文</h3>
+		<div style="width: auto; height: 100px;">
+		    <input type="text" class="txt" id="frCal" />
+        </div>
+    </div>
+    <div class="grid_3">
+        <h3>例 6：国际化DEMO-英文</h3>
+        <div style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="enCal" />
+        </div>
+    </div>
+    <div class="grid_3">
+        <h3>例7：国际化DEMO-自定义</h3>
+        <div style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="jaCal" />
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例 8：选择范围限制（只能选择2013-12-12~2014-1-25）</h3>
+        <div  style="width: auto; height: 100px;">
+            <input type="text" class="txt" id="rangeCal" />
+        </div>
+    </div>
+    <div class="grid_6">
+        <h3>例 9：动态关联日历,选择开始时间或者结束时间,另一个会有选择限制。</h3>
+        <div style="width: auto; height: 220px;">
+            <span>开始时间：</span><input id="beginCal" type='text' class="txt"  />
+            <span>结束时间：</span><input id="endCal" type='text' class="txt"  />
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例 10：内嵌模式(内嵌在页面中，而非触发事件显示)</h3>
+        <div  style="width: auto;">
+            <span>当前选择日期：</span>
+            <span id="inlineShow" style="color:red;font-weight: bolder;"></span>
+            <div id="inlineCal"></div>
+        </div>
+    </div>
+    <div class="grid_6">
+        <h3>例 11：其他特性：非输入框也能显示日历</h3>
+        <div style="width: auto;">
+            <a href="javascript:void(0)" id="otherCal">点击我</a>
+            <span id="otherShow"></span>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div style="height:100px;"></div>
+</div>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script type="text/javascript">
+
+require(['sib/core/1.0/jQuery+','sib/calendar/1.0/Calendar'], function($, Calendar){
+
+    var simpleCal = new Calendar({
+        trigger : '#simpleCal',
+        output : '#simpleCal'
+    });
+
+    var weekCal = new Calendar({
+        trigger : '#weekCal',
+        output : '#weekCal',
+        showWeek : true
+    });
+
+    var noOtherMonthCal = new Calendar({
+        trigger : '#noOtherMonthCal',
+        output : '#noOtherMonthCal',
+        showOtherMonths : false
+    });
+
+    //国际化
+    var zhCal = new Calendar({
+        trigger : '#zhCal',
+        output : '#zhCal',
+        lang : 'zh-cn'
+    });
+    var frCal = new Calendar({
+        trigger : '#frCal',
+        output : '#frCal',
+        lang : 'fr'
+    });
+    var enCal = new Calendar({
+        trigger : '#enCal',
+        output : '#enCal',
+        lang : 'en'
+    });
+    var jaCal = new Calendar({
+        trigger : '#jaCal',
+        output : '#jaCal',
+        lang : 'ja'
+    });
+
+    //范围
+    var rangeCal = new Calendar({
+        trigger : '#rangeCal',
+        output : '#rangeCal',
+        date : '2014-1-10',
+        range : ['2013-12-12','2014-1-25']
+    });
+
+    var beginCal = new Calendar({
+        trigger : '#beginCal',
+        output : '#beginCal',
+        selectDate : function(ev, date){
+            endCal.setOption('range', [date]);
+        }
+    });
+    var endCal = new Calendar({
+        trigger : '#endCal',
+        output : '#endCal',
+        selectDate : function(ev, date){
+            beginCal.setOption('range', [null, date]);
+        }
+    });
+    
+    //inline 模式
+    var inlineCal = new Calendar({
+        inlineNode : '#inlineCal',
+        output : '#inlineShow'
+    });
+    inlineCal.show();
+    
+    var otherShow = new Calendar({
+        trigger : '#otherCal',
+        output : '#otherShow'
+    });
+})
+</script>
+</body>
+</html>

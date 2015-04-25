@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://miemiedev.github.io/mmGrid/examples/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Stepbar demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/960.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <style type="text/css">
+    .sib-stepbar-container{margin:10px 0px;}
+    </style>
+</head>
+<body>
+<div class="container_12">
+    <h1>
+		<a class="index" href="#">StepBar</a>
+		<span>Demo</span>
+		<a href="../../api/stepbar.html">api>></a>
+	</h1>
+    <hr>
+</div>
+<div class="container_12">
+    <h2>一、介绍</h2>
+    <p>StepBar控件提供步骤条，显示用户的操作步骤，总共多少步，当前第几步等信息，提供主题的配置化和灵活替换，提供多种颜色可供选择或自定义颜色
+    </p>
+    <p>主要功能包括：
+        <ul>
+            <li>1、可灵活选择或替换主体或颜色。</li>
+            <li>2、可操作事件，和控制步骤（可通过js动态控制下一步，达到动态显示）</li>
+        </ul>
+    </p>
+    <hr>
+    <h2>二、基本示例</h2>
+    <div class="grid_12">
+        <h3>例 1：仿淘宝支付流程</h3>
+		<div style="width: auto;">
+			<div class="color" id="colorArea" style="margin:5px;">
+		        <span>颜色：</span>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="orange">Orange</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="blue">Blue</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="green">Green</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="red">Red</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="pink">Pink</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="gray">Gray</a>
+		    </div>
+		    <ol id="stepBar">
+		        <li>加入购物车</li>
+		        <li>确认订单信息</li>
+		        <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <!-- <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <li>确认收货</li> -->
+		        <li>确认收货</li>
+		        <li>确认收货</li>
+		        <!-- <li>评价</li>
+		        <li>评价</li>
+		        <li>评价</li> -->
+		        <li>评价</li>
+		        <li>评价</li>
+		        <li>评价</li>
+		    </ol>
+		    <input id='next' type="button" value="下一步" class="btn" />
+		    <input id="reset" type="button" value="重置" class="btn" />
+		</div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_12">
+        <h3>例 2：仿丁丁地图车站显示</h3>
+		<div  style="width: auto;">
+            <div class="color" id="colorArea2">
+		        <span>颜色：</span>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="orange">Orange</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="blue">Blue</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="green">Green</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="red">Red</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="pink">Pink</a>
+		        <a href="javascript:void(0)" class="btn btn-min" data-value="gray">Gray</a>
+		    </div>
+		    <ol id="stepBar2">
+		        <li>雨花台南大门</li>
+		        <li>公交总公司驾校</li>
+		        <li>安德门[雨花南路]</li>
+		        <li>能仁里</li>
+		        <li>雨花西路</li>
+		        <li>窑湾街</li>
+		        <li>钓鱼台</li>
+		        <li>新桥</li>
+		        <li>评事街</li>
+		        <li>水西门(东)</li>
+		        <li>莫愁湖公园</li>
+		        <li>大士茶亭(水西门大街)</li>
+		        <li>茶亭东街</li>
+		        <li>纪念馆路</li>
+		        <li>康怡花园</li>
+		        <li>凤凰花园城</li>
+		        <li>清凉门大街[东]</li>
+		        <li>汉江路</li>
+		        <li>龙江新城市广</li>
+		        <li>龙江花园</li>
+		        <li>清江花苑</li>
+		        <li>佳盛花园</li>
+		        <li>定淮门</li>
+		        <li>古平岗(西)</li>
+		        <li>镇江路</li>
+		        <li>丁山宾馆</li>
+		        <li>双门楼宾馆</li>
+		        <li>盐仓桥(广场西)</li>
+		        <li>热河路</li>
+		        <li>南京西站</li>
+		    </ol>
+		    <input id='prev2' type="button" value="上一步" class="btn" />
+		    <input id='next2' type="button" value="下一步" class="btn" />
+		    <input id='complete2' type="button" value="完成" class="btn" />
+		    <input id="reset2" type="button" value="重置" class="btn" />
+		</div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_12">
+        <h3>例 3：主题切换</h3>
+        <div  style="width: auto;">
+            <div class="color" id="colorArea3" style="margin:5px;">
+		        <span>主题：</span>
+		        <select id="threme">
+		            <option value="default">default</option>
+		            <option value="point">point</option>
+		        </select>
+		    </div>
+		    <ol id="stepBar3">
+		        <li>加入购物车</li>
+		        <li>确认订单信息</li>
+		        <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <!-- <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <li>付款到支付宝</li>
+		        <li>确认收货</li> -->
+		        <li>确认收货</li>
+		        <li>确认收货</li>
+		        <!-- <li>评价</li>
+		        <li>评价</li>
+		        <li>评价</li> -->
+		        <li>评价</li>
+		        <li>评价</li>
+		        <li>评价</li>
+		    </ol>
+		    <input id='next3' type="button" value="下一步" class="btn" />
+		    <input id="reset3" type="button" value="重置" class="btn" />
+        </div>
+        <p class="well">
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+</div>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script type="text/javascript">
+require(['sib/core/1.0/jQuery+','sib/stepbar/1.0/StepBar'], function($, StepBar){
+    //alert(Slide);
+    var s = new StepBar({
+        target : 'stepBar'/* ,
+        //threme : 'point',
+        color : 'orange' */
+    });
+    $('#next').click(function(){
+        s.next();
+    });
+    
+    $('#colorArea a').click(function(){
+        var color = $(this).attr('data-value');
+        s.setStyle(color);
+        
+        $('#colorArea a').removeClass('btn-selected');
+        $(this).addClass('btn-selected');
+    });
+    $('#reset').click(function(){
+        s.reload();
+    });
+    
+    //2
+    var s2 = new StepBar({
+        target : 'stepBar2',
+        threme : 'point'/* ,
+        color : 'orange' */
+    });
+    $('#prev2').click(function(){
+        s2.prev();
+    });
+    $('#next2').click(function(){
+        s2.next();
+    });
+    $('#complete2').click(function(){
+        s2.complete();
+    });
+    $('#colorArea2 a').click(function(){
+        var color = $(this).attr('data-value');
+        s2.setStyle(color);
+        
+        $('#colorArea2 a').removeClass('btn-selected');
+        $(this).addClass('btn-selected');
+    });
+    $('#reset2').click(function(){
+        s2.reload();
+    });
+    
+    //3
+    var s3 = new StepBar({
+        target : 'stepBar3',
+        color : 'orange'
+    });
+    $('#next3').click(function(){
+        s3.next();
+    });
+    $('#threme').change(function(){
+        var threme = $(this).val();
+        s3.setThreme(threme);
+    });
+    $('#reset3').click(function(){
+        s3.reload();
+    });
+});
+</script>
+</body>
+</html>

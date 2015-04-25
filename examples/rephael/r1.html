@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Raphael demo</title>
+<style type="text/css">
+body {
+    background: #333;
+    color: #fff;
+    font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+}
+#holder {
+    height: 480px;
+    left: 50%;
+    margin: -240px 0 0 -320px;
+    position: absolute;
+    top: 50%;
+    width: 640px;
+}
+#copy {
+    bottom: 0;
+    font: 300 .7em "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+    position: absolute;
+    right: 1em;
+    text-align: right;
+}
+#copy a {
+    color: #fff;
+}
+</style>
+</head>
+    <div id="holder">
+        <img id="photo" src="../images/yunduan.jpg" width=320 height=240 />
+    </div>
+<body>
+    
+</body>
+<script type="text/javascript" src="../../js/seajs/sea-debug.js"></script>
+<script type="text/javascript">
+seajs.use(['sib/core/1.0/jQuery+',
+           'sib/charts/1.0/raphael/Raphael'], function($, Raphael){
+    
+    Raphael(function () {
+        var img = document.getElementById("photo");
+        img.style.display = "none";
+        var r = Raphael("holder", 600, 540);
+        
+        r.image(img.src, 140, 140, 320, 240);
+        r.image(img.src, 140, 380, 320, 240).attr({
+            transform: "s1-1",
+            opacity: .5
+        });
+        r.rect(140, 380, 320, 160).attr({
+            fill: "90-#333-#333",
+            stroke: "none",
+            opacity: .5
+        });
+    });
+
+});
+
+</script>
+</html>

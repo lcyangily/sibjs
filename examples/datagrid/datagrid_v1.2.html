@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DataGrid V1.1 Demo</title>
+</head>
+<body>
+<!-- <div style="width:900px;height:500px;">
+    <table id="tt" singleSelect="true"
+            idField="itemid" url="datagrid_data2.json">
+        <thead>
+            <tr>
+                <td field="itemid" width="80">Item ID</td>
+                <td field="productid" width="100" >Product</td>
+                <td field="listprice" width="80" align="right">List Price</td>
+                <td field="unitcost" width="80" align="right">Unit Cost</td>
+                <td field="attr1" width="250">Attribute</td>
+                <td field="status" width="60" align="center">Status</td>
+                <td field="a" width="60" align="center">Status</td>
+                <td field="b" width="60" align="center">Status</td>
+                <td field="c" width="60" align="center">Status</td>
+                <td field="d" width="60" align="center">Status</td>
+                <td field="e" width="60" align="center">Status</td>
+                <td field="f" width="60" align="center">Status</td>
+            </tr>
+        </thead>
+    </table>
+</div> -->
+<table id="tt"></table>
+<input id="mBtn" type="button" value="显示/隐藏DIV"  />
+<div id="mDiv" style="width:100%;height:500px;background: red;display:none;"></div>
+</body>
+<script type="text/javascript" src="../../js/seajs/sea-debug.js"></script>
+<script type="text/javascript" src="../../js/seajs/sea-config.js"></script>
+<script type="text/javascript">
+var data = {                                                      
+        "total":239,                                                      
+        "rows":[
+            {"serialNumber":"18688886661","usim":"你好。嘎达发","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "1", "status" : "", "select" : "1","opt" : ""},         
+            {"serialNumber":"18688886662","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "2", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886663","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "3", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886664","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "4", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886665","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "5", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886666","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "16", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886667","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "7", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886668","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "26", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886669","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "30", "status" : "", "select" : "1","opt" : ""},
+            {"serialNumber":"18688886660","usim":"IMEI1234567890111213145","phoneNo":"LK12345678901234","xingyongdu":"10000000", "lianghao" : "10", "status" : "", "select" : "1","opt" : ""}
+        ]
+    };
+
+seajs.use(['jquery', 'sib/datagrid/1.2/DataGrid'], function($, DataGrid){
+	new DataGrid({
+		target : 'tt',
+		width:'auto',
+		height:'auto',
+		//minHeight : 400,
+		//height:200,
+		/* border:false, */
+		nowrap: false,
+		striped: true,
+		/* fit:true, */
+		collapsible:true,
+		viewMode : 'detail',
+		//url:'datagrid_data.json',
+		data : data,
+		sortName: 'serialNumber',
+		sortOrder: 'desc',
+		remoteSort: false,
+		idField:'serialNumber',
+		showPageNumber:5,
+		singleSelect : false,
+		frozenColumns:[[
+		    {field:'ck', checkbox:true},
+		    {title:'serialNumber',field:'phoneNo',sortable:true}
+		]],
+		columns:[[
+		    {title:'Base Information',colspan:3},
+		    {field:'opt',title:'Operation',align:'center', rowspan:2,
+		        formatter:function(value,rec){
+		            return '<span style="color:red"><a href="#">Edit</a> <a href="#">Delete</a></span>';
+		        }
+		    }/* ,
+		    {field:'aaa', title:'AAA', rowspan:2},
+		    {field:'bbb', title:'BBB', rowspan:2} */
+		],[
+		    {field:'usim',title:'Name',sortable:true},
+		    {field:'serialNumber',title:'Address',rowspan:1,sortable:true,
+		        sorter:function(a,b){
+		            return (a>b?1:-1);
+		        }
+		    },
+		    {field:'lianghao',title:'Col41', dataType:'number', sortable:true}
+		]],
+		pagination:true,
+		rownumbers:true
+	});
+	
+	$('#mBtn').click(function(){
+	    $('#mDiv').toggle();
+	});
+});
+</script>
+</html>

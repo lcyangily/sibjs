@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>DataGrid api</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+	    <link rel="stylesheet" href="../css/normalize.css">
+	    <link rel="stylesheet" href="../css/main.css">
+	    <link rel="stylesheet" href="../css/960.css">
+	    <link rel="stylesheet" href="../css/base.css">
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container_12">
+            <h1><a class="index" href="#">DataGrid</a> 
+                <span>API</span>
+                <a href="../demo/autocomplete/ac.html">demo>></a>
+            </h1>
+            <hr>
+        </div>
+        <div class="container_12">
+            <h2>一、属性参数</h2>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>target</td>
+                    <td><em>null</em>, string, dom node</td>
+                    <td>必传，ID</td>
+                </tr>
+                <tr>
+                    <td>border</td>
+                    <td><em>true</em>, false</td>
+                    <td>表格外是否带边框，不用可设置false，或者写样式覆盖</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td><em>'auto'</em>, number</td>
+                    <td>表格宽度，默认auto为自适应。宽度改变会重新计算里面每个列宽。</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td><em>'auto'</em>, number</td>
+                    <td>高度自适应或者指定高度</td>
+                </tr>
+                <tr>
+                    <td>minHeight</td>
+                    <td><em>200</em>, number</td>
+                    <td>height为'auto'时, 此值生效,最低高度,当没有数据或者数据很少时很有用。</td>
+                </tr>
+                <tr>
+                    <td>frozenColumns</td>
+                    <td><em>null</em>, array</td>
+                    <td>固定列，该列固定在坐左边，当有横向滚动条时，这些列不会滚动，方便查看。支持多级表头，所以是二维数组。</td>
+                </tr>
+                <tr>
+                    <td>columns</td>
+                    <td><em>null</em>, array</td>
+                    <td>列属性，二维数组。支持多级表头。</td>
+                </tr>
+                <tr>
+                    <td>striped</td>
+                    <td><em>true</em>, false</td>
+                    <td>表格偶数行奇数行不同颜色</td>
+                </tr>
+                <tr>
+                    <td>method</td>
+                    <td><em>'post'</em>, 'get'</td>
+                    <td>表格Ajax查询数据提交方式</td>
+                </tr>
+
+                <tr>
+                    <td>idField</td>
+                    <td><em>null</em>, array</td>
+                    <td>表格主键，可以是一个列(string)或者联合主键(array)，这样更新或选择可以通过主键来更新一行，而不用通过行坐标。</td>
+                </tr>
+                <tr>
+                    <td>url</td>
+                    <td><em>null</em>, string</td>
+                    <td>表格数据请求地址</td>
+                </tr>
+                <tr>
+                    <td>loadMsg</td>
+                    <td><em>'Processing, please wait ...'</em>, string</td>
+                    <td>加载数据提示信息，可自定义，实现国际化</td>
+                </tr>
+                <tr>
+                    <td>noDataMsg</td>
+                    <td>string</td>
+                    <td>没有查询到记录的提示信息，自定义</td>
+                </tr>
+                <tr>
+                    <td>pagination</td>
+                    <td><em>false</em>, true</td>
+                    <td>是否显示分页</td>
+                </tr>
+                <tr>
+                    <td>rownumbers</td>
+                    <td><em>false</em>, true</td>
+                    <td>是否显示行记录是第几条</td>
+                </tr>
+                <tr>
+                    <td>singleSelect</td>
+                    <td><em>true</em>, false</td>
+                    <td>是否单选，每次只能选中一行</td>
+                </tr>
+                <tr>
+                    <td>pageNumber</td>
+                    <td><em>1</em>, number</td>
+                    <td>当前页码</td>
+                </tr>
+                <tr>
+                    <td>pageSize</td>
+                    <td><em>10</em>, number</td>
+                    <td>每页条数</td>
+                </tr>
+                <tr>
+                    <td>pageToolbar</td>
+                    <td><em>null</em>, string, DOM node</td>
+                    <td>分页工具条，可自定义操作。显示在分页条上</td>
+                </tr>
+                <tr>
+                    <td>showPageNumber</td>
+                    <td><em>10</em>, number</td>
+                    <td>分页条显示的页码数量</td>
+                </tr>
+                <tr>
+                    <td>pageDisplayMsg</td>
+                    <td><em>'共{total}条/{pages}页'</em>, string</td>
+                    <td>分页条上显示的信息，{total}为总数据量，{pages}为总页数</td>
+                </tr>
+                <tr>
+                    <td>queryParams</td>
+                    <td><em>{}</em>, object</td>
+                    <td>数据查询条件</td>
+                </tr>
+                <tr>
+                    <td>paramType</td>
+                    <td><em>null</em>, string('json')</td>
+                    <td>查询提交的参数类型，如果为json，会自动转成json类型传递</td>
+                </tr>
+                <tr>
+                    <td>sortName</td>
+                    <td><em>null</em>, string</td>
+                    <td>排序的列名</td>
+                </tr>
+                <tr>
+                    <td>sortOrder</td>
+                    <td><em>'asc'</em>, 'desc'</td>
+                    <td>升序还是降序</td>
+                </tr>
+                <tr>
+                    <td>remoteSort</td>
+                    <td><em>true</em>, false</td>
+                    <td>是否为远程后台排序，也支持前台当前页数据的排序(需要在列属性指定列数据类型，默认string)。</td>
+                </tr>
+                <tr>
+                    <td>contentType</td>
+                    <td><em>null</em>, string</td>
+                    <td>http传递时的 contentType,默认不用改写</td>
+                </tr>
+                <tr>
+                    <td>data</td>
+                    <td><em>null</em>, array</td>
+                    <td>数组，表格显示的数据。</td>
+                </tr>
+                <tr>
+                    <td>viewMode</td>
+                    <td><em>'default'</em>, string</td>
+                    <td>插件。还有'detail'模式(可实现Sub Grid)，可自行开发插件</td>
+                </tr>
+                <tr>
+                    <td>resultsLocation</td>
+                    <td><em>'row'</em>, string</td>
+                    <td>查询结果集数组的位置。如返回{a : 'aaa', b : {c : '', d :[...]}}配置'b.d',当前搜索结果为d对应的数组，可灵活配置结果集。</td>
+                </tr>
+                <tr>
+                    <td>totalLocation</td>
+                    <td><em>'total'</em>, string</td>
+                    <td>查询结果集总数字段的位置。如返回{a : 'aaa', b : {c : 100, d :[...]}}配置'b.c',当前搜索结果总数，可灵活配置。</td>
+                </tr>
+                <tr>
+                    <td>remotePageCurrentLabel</td>
+                    <td><em>'current'</em>, string</td>
+                    <td>查询的页码名，Server 端接受数据的属性名。后台无需接受指定参数，前台可灵活定制。</td>
+                </tr>
+                <tr>
+                    <td>remotePageSizeLabel</td>
+                    <td><em>'pageSize'</em>, string</td>
+                    <td>每页显示数名，Server 端接受数据的属性名。后台无需接受指定参数，前台可灵活定制。</td>
+                </tr>
+                <tr>
+                    <td>remoteSortNameLabel</td>
+                    <td><em>'sortName'</em>, string</td>
+                    <td>排序字段名，Server 端接受数据的属性名。后台无需接受指定参数，前台可灵活定制。</td>
+                </tr>
+                <tr>
+                    <td>remoteSortOrderLabel</td>
+                    <td><em>'sortOrder'</em>, string</td>
+                    <td>排序类型名，Server 端接受数据的属性名。后台无需接受指定参数，前台可灵活定制。</td>
+                </tr>
+                <tr>
+                    <td>onLoadSuccess</td>
+                    <td><em>null</em>, function</td>
+                    <td>加载数据成功的回调函数</td>
+                </tr>
+                <tr>
+                    <td>onLoadError</td>
+                    <td><em>null</em>, function</td>
+                    <td>加载数据失败的回调函数</td>
+                </tr>
+                <tr>
+                    <td>onClickRow</td>
+                    <td><em>null</em>, function(rowIndex, rowData){}</td>
+                    <td>点击一行的处理函数</td>
+                </tr>
+		        <tr>
+                    <td>onDblClickRow</td>
+                    <td><em>null</em>, function(rowIndex, rowData){}</td>
+                    <td>双击一行的处理函数</td>
+                </tr>
+		        <tr>
+                    <td>onSortColumn</td>
+                    <td><em>null</em>, function(sort, order){}</td>
+                    <td>排序的回调函数</td>
+                </tr>
+                <tr>
+                    <td>onSelect</td>
+                    <td><em>null</em>, function(rowIndex, rowData){}</td>
+                    <td>选择一行的回调函数</td>
+                </tr>
+		        <tr>
+                    <td>onUnselect</td>
+                    <td><em>null</em>, function(rowIndex, rowData){}</td>
+                    <td>取消选择一行的回调函数</td>
+                </tr>
+		        <tr>
+                    <td>onResize</td>
+                    <td><em>null</em>, function(){}</td>
+                    <td>尺寸改变回调函数</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>二、列属性参数</h2>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>sortable</td>
+                    <td><em>false</em>, true</td>
+                    <td>列是否可排序</td>
+                </tr>
+                <tr>
+                    <td>visible</td>
+                    <td><em>true</em>, false</td>
+                    <td>列是否可见</td>
+                </tr>
+                <tr>
+                    <td>field</td>
+                    <td><em>null</em>, string</td>
+                    <td>列对应数据的属性名</td>
+                </tr>
+                <tr>
+                    <td>title</td>
+                    <td><em>null</em>, string</td>
+                    <td>列显示的标题</td>
+                </tr>
+
+                <tr>
+                    <td>dataType</td>
+                    <td><em>'string'</em>, 'number'</td>
+                    <td>列数据类型，排序时候很有用，</td>
+                </tr>
+                <tr>
+                    <td>formatter</td>
+                    <td><em>function(){}</em>, 'function'</td>
+                    <td>列数据显示格式化function(colData, rowData, $td){}<br/>
+                        入参包括三个参数：colData:列数据，rowData:行数据, $td当前表格格子的DOM对象
+                    </td>
+                </tr>
+                <tr>
+                    <td>headerFormatter</td>
+                    <td><em>function(){}</em>, 'function'</td>
+                    <td>列数据显示格式化headerFormatter(col, $th){}<br/>
+                        入参包括三个参数：col:列定义, $th当前表格头格子的DOM对象
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <h2>三、方法</h2>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>名称</th>
+                    <th>入参</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>resize</td>
+                    <td></td>
+                    <td>重新调整尺寸</td>
+                </tr>
+                <tr>
+                    <td>reload</td>
+                    <td>param</td>
+                    <td>重新加载表格数据</td>
+                </tr>
+                <tr>
+                    <td>getSelected</td>
+                    <td>msg:string</td>
+                    <td>得到第一个被选中的行记录</td>
+                </tr>
+                <tr>
+                    <td>getSelectedIndex</td>
+                    <td></td>
+                    <td>获的第一个选择的坐标,没有返回 -1</td>
+                </tr>
+
+                <tr>
+                    <td>getRowIndex</td>
+                    <td></td>
+                    <td>通过行记录获得坐标,需要设置idField, 没有idField或找不到值返回-1</td>
+                </tr>
+                <tr>
+                    <td>getSelections</td>
+                    <td></td>
+                    <td>得到所有选中的记录</td>
+                </tr>
+                <tr>
+                    <td>clearSelections</td>
+                    <td></td>
+                    <td>清除所有被选中的</td>
+                </tr>
+                <tr>
+                    <td>selectRow</td>
+                    <td>index</td>
+                    <td>通过记录数组下标选择一行</td>
+                </tr>
+                <tr>
+                    <td>unselectRow</td>
+                    <td>index</td>
+                    <td>通过记录数组下标取消选择一行</td>
+                </tr>
+                <tr>
+                    <td>selectRecord</td>
+                    <td>idValues</td>
+                    <td>通过id值得到一行记录</td>
+                </tr>
+                <tr>
+                    <td>unselectRecord</td>
+                    <td>idValues</td>
+                    <td>取消选择</td>
+                </tr>
+                <tr>
+                    <td>isSelected</td>
+                    <td>row</td>
+                    <td>判断行记录是否被选中</td>
+                </tr>
+                <tr>
+                    <td>getRow</td>
+                    <td>index</td>
+                    <td>通过记录数组下获取行数据</td>
+                </tr>
+                <tr>
+                    <td>getRows</td>
+                    <td></td>
+                    <td>获取所有行数据</td>
+                </tr>
+                <tr>
+                    <td>refresh</td>
+                    <td></td>
+                    <td>刷新表格</td>
+                </tr>
+                <tr>
+                    <td>updateRow</td>
+                    <td>index, row</td>
+                    <td>更新一行</td>
+                </tr>
+                <tr>
+                    <td>updateRowByIdField</td>
+                    <td>idFields, row</td>
+                    <td>更新一行</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

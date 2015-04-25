@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Choose demo</title>
+<style type="text/css">
+
+</style>
+
+<style type="text/css">
+#slide-demo-2{
+    height : 200px;
+    overflow: hidden;
+}
+#slide-demo-2 .sib-slide-panel img {
+    margin-left: -660px;
+}
+</style>
+</head>
+
+<body>
+<div id="slide-demo-1" class="slide-demo ui-switchable" data-widget-cid="widget-5">
+    <ul class="tabs-content" data-switchable-role="content" style="position: relative;">
+        <li class="tabs-panel" style="">
+            <a href="#"><img src="./images/slide_1.jpg"></a>
+        </li>
+        <li class="tabs-panel" style="display: list-item;">
+            <a href="#"><img src="./images/slide_2.jpg"></a>
+        </li>
+        <li class="tabs-panel" style="display: list-item;">
+            <a href="#"><img src="./images/slide_3.jpg"></a>
+        </li>
+    </ul>
+</div>
+
+<div id="slide-demo-2">
+    <ul class="tabs-nav">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ul class="tabs-content">
+        <li class="tabs-panel">
+            Hello
+        </li>
+        <li class="tabs-panel">
+            World
+        </li>
+        <li class="tabs-panel">
+            Girl
+        </li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script type="text/javascript">
+require(['sib/core/1.0/jQuery+','sib/tabs/1.0/Tabs'], function($, Tabs){
+    var c = new Tabs({
+        target : 'slide-demo-1'
+    }); 
+    var c2 = new Tabs({
+        target : 'slide-demo-2',
+        triggerType : 'hover',
+        bodyAutoSize : true
+    });
+});
+
+</script>
+</html>

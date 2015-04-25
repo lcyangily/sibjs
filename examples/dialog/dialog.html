@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Dialog</title>
+</head>
+<body>
+<style type="text/css">
+    
+</style>
+<h1 style="font-size:22px;">
+    PageNavigator:页内导航组件（仿天猫商品快速到达）
+</h1>
+<div class="box" id="box1" style="height:200px;background: #f2f2f2;">天猫电器城服务</div>
+<div class="box" id="box2">优惠信息</div>
+<div class="box" id="box3" style="height:800px;background: #f2f2f2;">关联推荐</div>
+<div class="box" id="box4">商品参数</div>
+<div class="box" id="box5" style="height:300px;background: #f2f2f2;">使用建议</div>
+<div class="box" id="box6">店铺服务详情</div>
+<div class="box" id="box7" style="height:300px;background: #f2f2f2;">常见问题</div>
+<div class="box" id="box8">8</div>
+<div class="box" id="box9" style="height:200px;background: #f2f2f2;">9</div>
+<div class="box" id="box10">10</div>
+<div>
+<ul class="sib-page-nav" id="myNav">
+    <!-- <li><a href="#">回到顶部（锚点）</a></li> -->
+    <li class="header">快速直达</li>
+    <li><a href="#box1">天猫电器城服务</a></li>
+    <li><a href="#box2">优惠信息</a></li>
+    <li><a href="#box3">关联推荐</a></li>
+    <li><a href="#box4">商品参数</a></li>
+    <li><a href="#box5">使用建议</a></li>
+    <li><a href="#box6">店铺服务详情</a></li>
+    <li><a href="#box7">常见问题</a></li>
+    <li class="footer"></li>
+</ul>
+
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script>
+
+require(['sib/core/1.0/jQuery+', 'sib/dialog/1.0/Dialog'], function($, Dialog){
+    var d1 = new Dialog({
+        title : '你好',
+        content : 'World!!!',
+        modal : true
+    });
+    
+    var d2 = new Dialog({
+        title : '你好',
+        content : 'World!!!',
+        position : {
+            my : 'center center',
+            at : 'center+20 center+20',
+            of : window
+        }
+    });
+    
+    var d3 = new Dialog({
+        title : '你好',
+        content : 'World!!!',
+        position : {
+            my : 'center center',
+            at : 'center+40 center+40',
+            of : window
+        },
+        modal : true
+    });
+    
+    var d4 = new Dialog({
+        title : '你好',
+        content : 'World!!!',
+        position : {
+            my : 'center center',
+            at : 'center+60 center+60',
+            of : window
+        },
+        modal : true
+    });
+    
+    var d5 = new Dialog({
+        title : '你好',
+        content : '../PageSidebar.html',
+        height : 500,
+        position : {
+            my : 'center center',
+            at : 'center+80 center+80',
+            of : window
+        }
+    });
+    
+    d1.open();
+    d2.open();
+    d3.open();
+    d4.open();
+    d5.open();
+});
+</script>
+</body>
+</html>

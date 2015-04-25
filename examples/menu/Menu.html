@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Menu demo</title>
+</head>
+
+<body>
+    <ul id="menu">
+      <!-- <li class="sib-state-disabled"><a href="#">Aberdeen</a></li>
+      <li><a href="#">Ada</a></li>
+      <li><a href="#">Adamsville</a></li>
+      <li><a href="#">Addyston</a></li>-->
+      <li class="fm">
+        <a href="#">Delphi</a>
+        <ul>
+          <li class="sib-state-disabled"><a href="#">Ada</a></li>
+          <li><a href="#">Saarland</a></li>
+          <li><a href="#">Salzburg</a></li>
+        </ul>
+      </li>
+      <li class="fm"><a href="#">Saarland</a></li>
+      <li class="fm">
+        <a href="#">Salzburg</a>
+        <ul>
+          <li>
+            <a href="#">Delphi</a>
+            <ul>
+              <li><a href="#">Ada</a></li>
+              <li><a href="#">Saarland</a></li>
+              <li><a href="#">Salzburg</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Delphi</a>
+            <ul>
+              <li><a href="#">Ada</a></li>
+              <li><a href="#">Saarland</a></li>
+              <li><a href="#">Salzburg</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Perch</a></li>
+        </ul>
+      </li>
+      <li class="sib-state-disabled fm"><a href="#">Amesville</a></li>
+    </ul>
+</body>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<style>
+  *{margin:0px;padding:0px;}
+  body{padding:10px;}
+  .sib-menu { width: 154px; }
+  /*#menu{width:900px;}
+  #menu .fm{width:160px;float:left;}*/
+</style>
+<script type="text/javascript">
+require(['sib/core/1.0/jQuery+','sib/menu/1.0/Menu'], function($, Menu){
+    //alert(Slide);
+    var m = new Menu({
+        target : 'menu' ,
+        position : {
+            at : 'right top',
+            my : 'left top'
+        } 
+    });
+    
+    /* m.hide();
+    
+    $(document).on('contextmenu', function(e){
+        e.preventDefault();
+        m.show({
+            of : e,
+            my : 'left top',
+        });
+        
+    });
+    
+    $(document).on('click', function(e){
+        m.hide();
+    }); */
+});
+
+</script>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Grid_V1.1 新表格测试</title>
+</head>
+<body>
+
+<table id="tt"
+        title="Editable DataGrid" iconCls="icon-edit" singleSelect="true"
+        idField="itemid" url="datagrid_data2.json">
+    <thead>
+        <!-- <tr>
+            <td field="itemid" width="80">Item ID</td>
+            <td field="productid" width="100" >Product</td>
+            <td field="listprice" width="80" align="right">List Price</td>
+            <td field="unitcost" width="80" align="right">Unit Cost</td>
+            <td field="attr1" width="250">Attribute</td>
+            <td field="status" width="60" align="center">Status</td>
+            <td field="a" width="60" align="center">Status</td>
+            <td field="b" width="60" align="center">Status</td>
+            <td field="c" width="60" align="center">Status</td>
+            <td field="d" width="60" align="center">Status</td>
+            <td field="e" width="60" align="center">Status</td>
+            <td field="f" width="60" align="center">Status</td>
+        </tr> -->
+    </thead>
+</table>
+<div id="pageToolbar"><button style="margin:0;">删除</button></div>
+</body>
+<script type="text/javascript" src="../../js/seajs/sea-debug.js"></script>
+<script type="text/javascript">
+
+seajs.use(['sib/core/1.0/jQuery+','sib/datagrid/1.2/DataGrid'], function($, DataGrid){
+    
+var data = {
+    "total":239,                                                      
+    "rows":[
+        {"phoneNo":"18688886661","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000001", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},         
+        {"phoneNo":"18688886662","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000002", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886663","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000003", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886664","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886662","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000002", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886663","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000003", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886664","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886665","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886666","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886667","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886668","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886669","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+        {"phoneNo":"18688886660","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""}
+    ]
+};
+var data2 = {
+        "total":239,                                                      
+        "rows":[
+            {"phoneNo":"18688886661","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000001", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},         
+            {"phoneNo":"18688886662","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000002", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+            {"phoneNo":"18688886663","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000003", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+            {"phoneNo":"18688886664","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000000", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""}
+        ]
+    };
+var pGrid = new DataGrid({
+     target : 'tt',
+     /* width:700, */
+     /* width : '100%',
+     height:'auto', */
+     //height:300,
+     /* border:false, */
+     nowrap: false,
+     striped: true,
+     /* fit:true, */
+     collapsible:true,
+     //url:'datagrid_data.json',
+     data : data,
+     sortName: 'code',
+     sortOrder: 'desc',
+     remoteSort: false,
+     idField:'phoneNo',
+     showPageNumber:5,
+     frozenColumns:[[
+         /* {field:'ck',checkbox:true} */
+         /* {field:'chk', 
+             headerFormatter : function(col, td){
+                 var $chk = $('<input type="checkbox" />').click(function(e){
+                     
+                     if($(this).attr('checked')) {
+                         $('input[name=hello_abc]').attr('checked', true);
+                     } else {
+                         $('input[name=hello_abc]').attr('checked', false);
+                     }
+                     
+                 });
+                 $(td).append($chk);
+             },
+             formatter : function(val, row, td){
+                 var $chk = $('<input type="checkbox" name="hello_abc" />').click(function(e){
+                     e.stopPropagation();
+                 });
+                 $chk.data('state', row);
+                 $(td).append($chk);
+             }
+         } *//* ,
+         {title:'usim',field:'usim',width:80,sortable:true} */
+     ]],
+     columns:[[
+         {title:'Base Information',colspan:3},
+         {field:'opt',title:'Operation',/* width:500, */align:'center', rowspan:2,
+             formatter:function(value,rec){
+                 return '<span style="color:red">Edit Delete</span>';
+             }
+         }/* ,
+         {field:'aaa', title:'AAA', rowspan:2},
+         {field:'bbb', title:'BBB', rowspan:2} */
+     ],[
+         {field:'phoneNo',title:'PhoneNumber',width:120,sortable:true},
+         {field:'usim',title:'USIM',/* width:220, */rowspan:1,sortable:true,
+             sorter:function(a,b){
+                 return (a>b?1:-1);
+             }
+         },
+         {field:'col1',title:'Col1'/* ,width:150 */}
+     ]],
+     pagination:true,
+     pageToolbar : 'pageToolbar',
+     //rownumbers:true,
+     viewMode : 'detail',
+     detailFormatter : function(rowIndex, rowData, $parent){
+         return '<table class="subGrid"></table>';
+     },
+     onExpandRow : function(index, row){
+         //alert('expand : index=' + index + ';phoneNo=' + row['phoneNo']);
+         var $detailContainer = this.getRowDetail(index);
+         var subGrid = new DataGrid({
+             target : $detailContainer.find('table.subGrid'),
+             /* width:500, */
+             minHeight:50,
+             columns:[[
+                       {title:'Base Information',colspan:3},
+                       {field:'opt',title:'Operation',/* width:500, */align:'center', rowspan:2,
+                           formatter:function(value,rec){
+                               return '<span style="color:red">Edit Delete</span>';
+                           }
+                       }/* ,
+                       {field:'aaa', title:'AAA', rowspan:2},
+                       {field:'bbb', title:'BBB', rowspan:2} */
+                   ],[
+                       {field:'phoneNo',title:'PhoneNumber',width:120,sortable:true},
+                       {field:'usim',title:'USIM',/* width:220, */rowspan:1,sortable:true,
+                           sorter:function(a,b){
+                               return (a>b?1:-1);
+                           }
+                       },
+                       {field:'col1',title:'Col1'/* ,width:150 */}
+             ]],
+             data : data2,
+             onResize : function(){
+                 //alert('resize');
+                 //console.debug('onResize ...');
+                 //console.debug(pGrid.fixDetailHeight);
+                 pGrid.fixDetailHeight(index);
+                 //pGrid.resize()
+             }/* ,
+             viewMode : 'detail',
+             detailFormatter : function(rowIndex, rowData, $parent){
+                 return '<table class="subSubGrid"></table>';
+             },
+             onExpandRow : function(index, row){
+                 var $detailContainer = this.getRowDetail(index);
+                 new DataGrid({
+                     target : $detailContainer.find('table.subSubGrid'),
+                     columns:[[
+                               {title:'Base Information',colspan:3},
+                               {field:'opt',title:'Operation',align:'center', rowspan:2,
+                                   formatter:function(value,rec){
+                                       return '<span style="color:red">Edit Delete</span>';
+                                   }
+                               }
+                           ],[
+                               {field:'phoneNo',title:'PhoneNumber',width:120,sortable:true},
+                               {field:'usim',title:'USIM',rowspan:1,sortable:true,
+                                   sorter:function(a,b){
+                                       return (a>b?1:-1);
+                                   }
+                               },
+                               {field:'col1',title:'Col1'}
+                     ]],
+                     data : data2,
+                     onResize : function(){
+                         subGrid.fixDetailHeight(index);
+                     }
+                 });
+                 this.fixDetailHeight(index);
+             },
+             onCollapseRow : function(index, row){
+                 this.fixDetailHeight(index);
+             } */
+         });
+         this.fixDetailHeight(index);
+     },
+     onCollapseRow : function(index, row){
+         //alert('collapseRow : index=' + index + ';phoneNo=' + row['phoneNo']);
+         this.fixDetailHeight(index);
+     }
+ });
+})
+</script>
+</html>

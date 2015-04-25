@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://miemiedev.github.io/mmGrid/examples/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ProgressBar demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/960.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <style>
+	  .box{padding:20px;/* margin-top:10px; */}
+	</style>
+</head>
+<body>
+<div class="container_12">
+    <h1>
+		<a class="index" href="#">ProgressBar</a>
+		<span>Demo</span>
+		<a href="../../api/progressbar.html">api>></a>
+	</h1>
+    <hr>
+</div>
+<div class="container_12">
+    <h2>一、介绍</h2>
+    <p>ProgressBar控件提供进度的显示，如上传进度等。
+    </p>
+    <p>主要功能包括：
+        <ul>
+            <li>1、可动态定制颜色，在0-100只能都可设置颜色范围，到每个范围显示不同颜色</li>
+            <li>2、进度的动画，动画效果可定制</li>
+        </ul>
+    </p>
+    <hr>
+    <h2>二、基本示例</h2>
+    <div class="grid_12">
+        <h3>例 1：进度值在html中设置</h3>
+		<div style="width: auto; height: 50px;">
+			<div id="pb80" data-value="80" class="box"></div>
+		</div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_12">
+        <h3>例 2：进度值在JS中设置</h3>
+		<div  style="width: auto; height: 50px;">
+            <div id="pb50" class="box"></div>
+		</div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_12">
+        <h3>例 3：动态设置：
+            <input type="text" id="dval" class="txt" value="60" />
+            <input id="setBtn" type="button" class="btn" value="设置" />
+        </h3>
+        <div  style="width: auto; height: 50px;">
+            <div id="pbx" class="box"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_12">
+        <h3>例 4：改变值自定义回调方法, 改变值：
+            <select id="changeVal">
+                <option value="10">10</option>
+                <option value="30">30</option>
+                <option value="80">80</option>
+                <option value="100">100</option>
+            </select>
+            <span id="logShow" class="red"></span>
+        </h3>
+        <div  style="width: auto; height: 50px;">
+            <div id="pbfunc" data-value="10" class="box"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <hr>
+</div>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script type="text/javascript">
+require(['sib/core/1.0/jQuery+','sib/progressbar/1.0/ProgressBar'], function($, ProgressBar){
+    //alert(Slide);
+    var pb80 = new ProgressBar('pb80');
+    var pb50 = new ProgressBar({
+        target : 'pb50',
+        value : 50
+    });
+    
+    //setValue test
+    var pbx = new ProgressBar({
+        target : 'pbx'
+    });
+    $('#setBtn').click(function(){
+        var val = parseInt($('#dval').val()) || 0;
+        pbx.setValue(val);
+    });
+    $('#setBtn').click();
+    
+    //onChange test
+    var pbfunc = new ProgressBar({
+        target : '#pbfunc',
+        onChange : function(ev, data){
+            var str = '   onChange --->  oldValue : ' + data.oldValue + '; newValue : ' + data.newValue;
+            $('#logShow').text(str);
+        }
+    });
+    $('#changeVal').change(function(ev){
+        pbfunc.setValue($(this).val());
+    });
+});
+
+</script>
+</body>
+</html>

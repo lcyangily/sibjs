@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>StepBar api</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+	    <link rel="stylesheet" href="../css/normalize.css">
+	    <link rel="stylesheet" href="../css/main.css">
+	    <link rel="stylesheet" href="../css/960.css">
+	    <link rel="stylesheet" href="../css/base.css">
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container_12">
+            <h1><a class="index" href="#">StepBar</a> 
+                <span>API</span>
+                <a href="../demo/stepbar/sb.html">demo>></a>
+            </h1>
+            <hr>
+        </div>
+        <div class="container_12">
+            <h2>一、属性参数</h2>
+            <table class="table">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>target</td>
+                    <td><em>null</em>, string, dom node</td>
+                    <td>必传，ID</td>
+                </tr>
+                <tr>
+                    <td>threme</td>
+                    <td><em>'default'</em>, string</td>
+                    <td>主题样式default, point 对应具体样式为sib-stepbar-default,sib-stepbar-point,可自定义</td>
+                </tr>
+                <tr>
+                    <td>allColors</td>
+                    <td><em>['orange','blue','green','red','pink','gray']</em>, array</td>
+                    <td>可供选择的颜色,如果有更多，可添加</td>
+                </tr>
+                <tr>
+                    <td>color</td>
+                    <td><em>'blue'</em>, string</td>
+                    <td>当前的颜色，allColors中的一个值</td>
+                </tr>
+                <tr>
+                    <td>stepsSelector</td>
+                    <td><em>'li'</em>, string</td>
+                    <td>初始化时，原页面中节点，jquery selector</td>
+                </tr>
+                <tr>
+                    <td>nodes</td>
+                    <td><em>null</em>, array</td>
+                    <td>初始化节点数，此处有值则忽略stepsSelector选择的页面节点</td>
+                </tr>
+                <tr>
+                    <td>labelName</td>
+                    <td><em>'label'</em>, string</td>
+                    <td>节点元素显示的属性名</td>
+                </tr>
+                <tr>
+                    <td>valueName</td>
+                    <td><em>'value'</em>, string</td>
+                    <td>节点元素的值属性名</td>
+                </tr>
+                <tr>
+                    <td>border</td>
+                    <td><em>true</em>, false</td>
+                    <td>是否有边框</td>
+                </tr>
+
+                <tr>
+                    <td>width</td>
+                    <td><em>'auto'</em>, number</td>
+                    <td>步骤条宽度</td>
+                </tr>
+                <tr>
+                    <td>minWidth</td>
+                    <td><em>300</em>, number</td>
+                    <td>步骤条最小宽度</td>
+                </tr>
+                <tr>
+                    <td>stepWidth</td>
+                    <td><em>'auto'</em>, number</td>
+                    <td>步骤条每个节点的最小宽度</td>
+                </tr>
+                <tr>
+                    <td>stepMinWidth</td>
+                    <td><em>50</em>, number</td>
+                    <td>步骤条每个节点的最小宽度</td>
+                </tr>
+                <tr>
+                    <td>act</td>
+                    <td><em>0</em>, number</td>
+                    <td>当前第几步, 从1开始。 1,2,3...  0未开始,nodes.length + 1 结束</td>
+                </tr>
+                <tr>
+                    <td>onStepClick</td>
+                    <td><em>null</em>function</td>
+                    <td>点击节点回调</td>
+                </tr>
+            </tbody></table>
+
+
+            <h2>二、方法</h2>
+            <table class="table table-bordered">
+                <tbody><tr>
+                    <th>名称</th>
+                    <th>可选值</th>
+                    <th>描述</th>
+                </tr>
+                <tr>
+                    <td>resize</td>
+                    <td></td>
+                    <td>重新计算调整尺寸</td>
+                </tr>
+                <tr>
+                    <td>reload</td>
+                    <td>nodes : Array</td>
+                    <td>重新加载显示步骤条，入参为节点数组</td>
+                </tr>
+                <tr>
+                    <td>setCurrentIndex</td>
+                    <td>number</td>
+                    <td>通过节点索引index设置当前步骤</td>
+                </tr>
+                <tr>
+                    <td>setCurrentValue</td>
+                    <td>value</td>
+                    <td>通过节点value设置当前执行哪一步</td>
+                </tr>
+                <tr>
+                    <td>getCurrent</td>
+                    <td></td>
+                    <td>得到当前节点的数据</td>
+                </tr>
+                <tr>
+                    <td>getCurrentIndex</td>
+                    <td></td>
+                    <td>得到当前节点的坐标</td>
+                </tr>
+                <tr>
+                    <td>getNodes</td>
+                    <td></td>
+                    <td>得到所有节点</td>
+                </tr>
+                <tr>
+                    <td>setStyle</td>
+                    <td>color : string</td>
+                    <td>设置颜色，入参为allColors 所有颜色中的一个</td>
+                </tr>
+                <tr>
+                    <td>setThreme</td>
+                    <td>threme : string</td>
+                    <td>设置主题</td>
+                </tr>
+                <tr>
+                    <td>prev</td>
+                    <td></td>
+                    <td>上一步</td>
+                </tr>
+                <tr>
+                    <td>next</td>
+                    <td></td>
+                    <td>下一步</td>
+                </tr>
+                <tr>
+                    <td>complete</td>
+                    <td></td>
+                    <td>完成</td>
+                </tr>
+                
+            </tbody></table>
+        </div>
+    </body>
+</html>

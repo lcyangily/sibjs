@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://miemiedev.github.io/mmGrid/examples/index.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms no-csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DataGrid demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/960.css">
+    <link rel="stylesheet" href="../../css/base.css">
+</head>
+<body>
+<div class="container_12">
+    <h1>
+		<a class="index" href="#">DataGrid</a>
+		<a href="../api/datagrid.html">api</a>
+	</h1>
+    <hr>
+</div>
+<div class="container_12">
+    <h2>一、介绍</h2>
+
+    <p>
+    提供丰富功能的表格组件，灵活的插件机制易于扩展，并提供了操作的诸多回调接口，方便自定义操作。
+    </p>
+    <p>主要功能包括：
+        <ul>
+            <li>1、数据源支持本地数组和远程数据（JSON）。</li>
+            <li>2、宽高尺寸的自动计算，提供最优的尺寸展示。</li>
+            <li>3、固定列的支持</li>
+            <li>4、联合主键的支持</li>
+            <li>5、多级表头的支持（支持N级）</li>
+            <li>6、列显示定制（隐藏显示指定列）</li>
+            <li>7、列排序的支持（支持当前页排序和后台排序）</li>
+            <li>8、数据的请求支持json数据的提交（可自动将请求的键值对转换成json字符串提交，适合前后台纯Ajax交互）。</li>
+            <li>9、分页</li>
+            <li>10、请求后台数据的名称的定制。（自定义属性名，方便服务器接口的重用）</li>
+        </ul>
+    </p>
+    <hr>
+    <h2>二、基本示例</h2>
+    <p>
+        DataGrid支持两种数据加载方式：本地对象数据和远程AJAX数据。
+    </p>
+
+    <div class="grid_6">
+        <h3>例 1：使用本地对象加载数据</h3>
+		<div style="width: auto;">
+			<table id="simple"></table>
+		</div>
+        <p class="well">
+            配置<em>data</em>来配置本地数组。
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例 2：使用AJAX加载数据</h3>
+		<div  style="width: auto;">
+			<table id="simpleAjax"></table>
+		</div>
+        <p class="well">
+            配置<em>url</em>和<em>queryParams</em>从服务器端加载数据。
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例3：固定列</h3>
+        <div  style="width: auto;">
+            <table id="frozenGrid"></table>
+        </div>
+        <p class="well">
+            第一列不随着滚动条的滚动而滚动
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例4：多级表头</h3>
+        <div  style="width: auto;">
+            <table id="mulHeadGrid"></table>
+        </div>
+        <p class="well">
+            表头的分组
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例5：列排序</h3>
+        <div  style="width: auto;">
+            <table id="sortGrid"></table>
+        </div>
+        <p class="well">
+            第一列为字符串排序，第二列为数字格式排序,位数为0的行可看出区别
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例6：多行选择</h3>
+        <div  style="width: auto;">
+            <table id="mulSelectGrid"></table>
+        </div>
+        <p class="well">
+            点击多行记录
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="grid_6">
+        <h3>例7：索引咧</h3>
+        <div  style="width: auto;">
+            <table id="rownumberGrid"></table>
+        </div>
+        <p class="well">
+            索引显示行的索引
+        </p>
+    </div>
+    <div class="grid_6">
+        <h3>例8：分页（无后台服务器，静态数据）</h3>
+        <div  style="width: auto;">
+            <table id="pageGrid"></table>
+        </div>
+        <p class="well">
+            <em>pagination</em>配置是否显示分页，<em>showPageNumber</em>配置页码显示个数
+        </p>
+    </div>
+    <div class="clear"></div>
+    <hr>
+</div>
+<script type="text/javascript" src="../../js/requirejs/require.js"></script>
+<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<script type="text/javascript">
+
+require(['sib/core/1.0/jQuery+','sib/datagrid/1.0/DataGrid'], function($, DataGrid){
+
+	var data = {
+	    "total":239,                                                      
+	    "rows":[
+	        {"phoneNo":"18688886661","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000001", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},         
+	        {"phoneNo":"18688886662","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000002", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886663","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000003", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886664","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000004", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886665","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000005", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886666","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000006", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886667","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000007", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886668","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000008", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886669","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000009", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886610","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000010", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886611","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000011", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886612","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000012", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""},
+	        {"phoneNo":"18688886613","usim":"IMEI1234567890111213145","addr":"LK12345678901234","col1":"10000013", "lianghao" : "10000", "status" : "", "select" : "1","opt" : ""}
+	    ]
+	};
+
+	var simpleGrid = new DataGrid({
+	     target : '#simple',
+	     data : data,
+         hasBackboard : false,
+	     columns:[[
+	         {field:'phoneNo',title:'PhoneNumber',width:120},
+	         {field:'usim',title:'USIM'},
+	         /* {field:'addr',title:'ADDR'}, */
+	         {field:'col1',title:'Col1'/* ,width:150 */}
+	     ]]
+	});
+    
+	var simpleAjax = new DataGrid({
+	    target : '#simpleAjax',
+	    url:'./datagrid_data.json',
+	    columns:[[
+            {field:'phoneNo',title:'PhoneNumber',width:120},
+            {field:'usim',title:'USIM'},
+            {field:'lianghao',title:'GoodNo'}
+        ]]
+	});
+	
+	var nativeSort = new DataGrid({
+	    target : '#nativeSort',
+	    data : data,
+	    columns:[[
+            {field:'phoneNo',title:'PhoneNumber',width:120},
+            {field:'usim',title:'USIM'},
+            /* {field:'addr',title:'ADDR'}, */
+            {field:'col1',title:'Col1'/* ,width:150 */}
+        ]]
+	});
+	
+	var remoteSort = new DataGrid({
+        target : '#remoteSort',
+        url:'./datagrid_data.json',
+        columns:[[
+            {field:'phoneNo',title:'PhoneNumber',width:120},
+            {field:'usim',title:'USIM'},
+            {field:'lianghao',title:'GoodNo'}
+        ]]
+    });
+	
+	//固定列
+	var frozenGrid = new DataGrid({
+        target : '#frozenGrid',
+        data : data,
+        frozenColumns : [
+            [{field : 'phoneNo', title : 'PhoneNumber'}]
+        ],
+        columns:[[
+            {field:'addr',title:'Addr'},
+            {field:'usim',title:'USIM'},
+            {field:'col1',title:'COL1'},
+            {field:'lianghao',title:'GoodNo'/* ,width:150 */}
+        ]]
+    });
+	
+	//多级表头
+    var mulHeadGrid = new DataGrid({
+        target : '#mulHeadGrid',
+        data : data,
+        columns:[[
+            {title : 'GroupA', colspan:3},
+            {field:'lianghao',title:'GoodNo', rowspan:3}
+        ],[
+            {title:'GroupB', colspan:2},
+            {field:'col1',title:'COL1', rowspan:2}
+        ],[
+            {field:'phoneNo', title:'PhoneNumber'},
+            {field:'addr',title:'Addr'}
+        ]]
+    });
+	
+	//排序表格
+    var sortGrid = new DataGrid({
+        target : '#sortGrid',
+        data : data,
+        columns:[[
+            {field:'phoneNo',title:'PhoneNumber',sortable:true},
+            {field:'col1',title:'Col1', sortable:true, dataType:'number',align:'left'},
+            {field:'usim',title:'USIM'}
+        ]]
+    });
+
+    //多行选择
+    var mulSelectGrid = new DataGrid({
+        target : '#mulSelectGrid',
+        data : data,
+        columns:[[
+            {field:'phoneNo',title:'PhoneNumber'},
+            {field:'col1',title:'Col1'},
+            {field:'usim',title:'USIM'}
+        ]],
+        singleSelect : false
+    });
+    
+    //索引列
+    var rownumberGrid = new DataGrid({
+        target : '#rownumberGrid',
+        data : data,
+        columns:[[
+            {field:'phoneNo',title:'PhoneNumber'},
+            {field:'col1',title:'Col1'},
+            {field:'usim',title:'USIM'}
+        ]],
+        rownumbers : true
+    });
+    
+    //分页
+    var pageGrid = new DataGrid({
+        target : '#pageGrid',
+        data : data,
+        columns:[[
+            {field:'phoneNo',title:'PhoneNumber'},
+            {field:'col1',title:'Col1'},
+            {field:'usim',title:'USIM'}
+        ]],
+        rownumbers : true,
+        showPageNumber : 4,
+        pagination : true
+    });
+})
+</script>
+</body>
+</html>
