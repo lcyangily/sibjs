@@ -9,7 +9,7 @@
 
 define(function(require, exports, module) {
 
-    require('css!./DataGrid.css');
+    //require('css!./DataGrid.css');
 
     var $ = require('jquery+'),
         Widget = require('sib.widget'),

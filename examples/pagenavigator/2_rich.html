@@ -113,11 +113,12 @@
     <li><a href="#box9">去box9的位置</a></li>
     <li><a href="#box10">去box10的位置</a></li>
 </ul>
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script>
 
-require(['sib/core/1.0/jQuery+', 'sib/pagenavigator/1.0/PageNavigator'], function($, PageNavigator){
+require(['jquery', 'sib.pagenavigator'], function($, PageNavigator){
     var nav = new PageNavigator({
         target : '#myNav',
         //navSelector : '.J_PageNavigator',
