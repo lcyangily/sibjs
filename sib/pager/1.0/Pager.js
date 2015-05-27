@@ -58,7 +58,7 @@ define(function(require, exports, module) {
 
     var ALL_TYPES= {
         'stand' : 'p-page-n',
-        'min' : 'p-n',
+        'mini' : 'p-n',
         'full' : 'f-p-page-n-l-info-input-gobtn', 
         'fullellipsis' : 'f-p-pe-n-l-info-input-gobtn',
         'ellipsis' : 'p-pe-n'

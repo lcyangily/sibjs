@@ -14,6 +14,9 @@
     <style type="text/css">
         .trigger{ width:100px;}
         .trigger li{border:1px solid red;}
+        .hide{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -37,7 +40,7 @@
     <hr>
     <h2>二、基本示例</h2>
     <div class="grid_4">
-        <h3>例 1：元素</h3>
+        <h3>Hover 效果</h3>
 		<div style="width: auto; height: 100px;">
 			<ul id="trigger1" class="trigger">
 			   <li data-id="hellA">hello A</li>
@@ -45,10 +48,10 @@
 			   <li data-id="hellC">hello C</li>
 			</ul>
 		</div>
-		<div id="hellA">Hello A DESC</div>
-		<div id="hellB">Hello B DESC</div>
-		<div id="hellC">Hello C DESC</div>
-		<hr>
+		<div id="hellA" class="hide">Hello A DESC</div>
+		<div id="hellB" class="hide">Hello B DESC</div>
+		<div id="hellC" class="hide">Hello C DESC</div>
+        <h3>点击效果</h3>
 		<div style="width: auto; height: 100px;">
             <ul id="trigger2" class="trigger">
                <li>hello A</li>
@@ -57,62 +60,7 @@
             </ul>
         </div>
     </div>
-    <div class="grid_4">
-        <h3>例 2：带周显示</span></h3>
-		<div  style="width: auto; height: 100px;">
-			<input id="weekCal" class="txt" type='text'  />
-		</div>
-    </div>
-    <div class="grid_4">
-        <h3>例 3：当月不显示上一月和下一月的日期</span></h3>
-        <div  style="width: auto; height: 100px;">
-            <input id="noOtherMonthCal" class="txt" type='text'  />
-        </div>
-    </div>
-    <div class="clear"></div>
-    <hr>
-    <div class="grid_3">
-        <h3>例 4：国际化DEMO-中文</h3>
-		<div  style="width: auto; height: 100px;">
-            <input type="text" class="txt" id="zhCal" />
-		</div>
-    </div>
-    <div class="grid_3">
-        <h3>例 5：国际化DEMO-法文</h3>
-		<div style="width: auto; height: 100px;">
-		    <input type="text" class="txt" id="frCal" />
-        </div>
-    </div>
-    <div class="grid_3">
-        <h3>例 6：国际化DEMO-英文</h3>
-        <div style="width: auto; height: 100px;">
-            <input type="text" class="txt" id="enCal" />
-        </div>
-    </div>
-    <div class="grid_3">
-        <h3>例7：国际化DEMO-自定义</h3>
-        <div style="width: auto; height: 100px;">
-            <input type="text" class="txt" id="jaCal" />
-        </div>
-    </div>
-    <div class="clear"></div>
-    <hr>
-    <div class="grid_6">
-        <h3>例 8：选择范围限制（只能选择2013-12-12~2014-1-25）</h3>
-        <div  style="width: auto; height: 100px;">
-            <input type="text" class="txt" id="rangeCal" />
-        </div>
-    </div>
-    <div class="grid_6">
-        <h3>例 9：动态关联日历,选择开始时间或者结束时间,另一个会有选择限制。</h3>
-        <div style="width: auto; height: 220px;">
-            <span>开始时间：</span><input id="beginCal" type='text' class="txt"  />
-            <span>结束时间：</span><input id="endCal" type='text' class="txt"  />
-        </div>
-    </div>
-    <div class="clear"></div>
-    <hr>
-    <div class="grid_6" id="pp2" style="border: 2px solid red;">
+    <div class="grid_6 hide" id="pp2" style="border: 2px solid red;">
         <h3>例 10：内嵌模式(内嵌在页面中，而非触发事件显示)</h3>
         <div  style="width: auto;">
             <span>当前选择日期：</span>
@@ -120,23 +68,13 @@
             <div id="inlineCal"></div>
         </div>
     </div>
-    <div class="grid_6" id="pp" style="position: absolute;border: 1px solid red;">
-        <h3>例 11：其他特性：非输入框也能显示日历</h3>
-        <div style="width: auto;">
-            <a href="javascript:void(0)" id="otherCal"></a>
-            <div>11111111111</div>
-            <div>22222</div>
-            <div>33333333</div>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <hr>
     <div style="height:100px;"></div>
 </div>
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script type="text/javascript">
-require(['sib/core/1.0/jQuery+','sib/popup/1.0/Popup'], function($, Popup){
+require(['jquery','sib.popup'], function($, Popup){
 
     $('#trigger1 li').each(function(){
         var $this = $(this);

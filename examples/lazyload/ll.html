@@ -132,11 +132,12 @@
     <hr>
     <div style="height:100px;"></div>
 </div>
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script type="text/javascript">
 
-require(['sib/core/1.0/jQuery+','sib/lazyload/1.0/LazyLoad'], function($, LazyLoad){
+require(['jquery','sib.lazyload'], function($, LazyLoad){
 
     var ll = new LazyLoad({
         target : 'img'

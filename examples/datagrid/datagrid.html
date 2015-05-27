@@ -127,11 +127,12 @@
     <div class="clear"></div>
     <hr>
 </div>
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.min.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script type="text/javascript">
 
-require(['sib/core/1.0/jQuery+','sib/datagrid/1.0/DataGrid'], function($, DataGrid){
+require(['jquery','sib.datagrid'], function($, DataGrid){
 
 	var data = {
 	    "total":239,                                                      

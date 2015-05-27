@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>PageNavigator组件-仿天猫商品快速到达</title>
+    <title>Page</title>
 </head>
 <body>
 <style type="text/css">
@@ -57,18 +57,73 @@
 <h1 style="font-size:22px;">
     Pager
 </h1>
-<div id="J_page" style="width:100%;height:300px;"></div>
+<h3>标准模式 type : 'stand'</h3>
+<div id="J_page_stand" style="width:100%;height:50px;"></div>
+<h3>缩写模式 type : 'mini'</h3>
+<div id="J_page_mini" style="width:100%;height:50px;"></div>
+<h3>完整模式 type : 'full'</h3>
+<div id="J_page_full" style="width:100%;height:50px;"></div>
+<h3>ellipsis模式（显示第一页，最后一页和中间） type : 'ellipsis'</h3>
+<div id="J_page_ellipsis" style="width:100%;height:50px;"></div>
+<h3>完整ellipsis模式 type : 'fullellipsis'</h3>
+<div id="J_page_fullellipsis" style="width:100%;height:50px;"></div>
+<h3>自定义模式 type : 'info-f-p-n-l-page'</h3>
+<p>f->首页, p->上一页, page->页码，n->下一页，l->最后一页，info->页面信息，inout->输入框，gobtn->goto按钮</p>
+<p>用 '-' 分开</p>
+<div id="J_page_custom" style="width:100%;height:100px;"></div>
+
+
 <link rel="stylesheet" href="../../sib/theme/index.css">
 <script type="text/javascript" src="../../requirejs/require.js"></script>
 <script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script>
 
 require(['jquery', 'sib.pager'], function($, Pager){
-    var p = new Pager({
-        appendTo : '#J_page',
+    var stand = new Pager({
+        appendTo : '#J_page_stand',
+        totalPages : 30,
+        current : 6,
+        type : 'stand',
+        clsPrefix : 'ui-paging'
+    });
+
+    var mini = new Pager({
+        appendTo : '#J_page_mini',
+        totalPages : 30,
+        current : 6,
+        type : 'mini',
+        clsPrefix : 'ui-paging'
+    });
+
+    var full = new Pager({
+        appendTo : '#J_page_full',
+        totalPages : 30,
+        current : 6,
+        type : 'full',
+        clsPrefix : 'ui-paging'
+    });
+
+    var ellipsis = new Pager({
+        appendTo : '#J_page_ellipsis',
         totalPages : 30,
         current : 6,
         type : 'ellipsis',
+        clsPrefix : 'ui-paging'
+    });
+
+    var fullellipsis = new Pager({
+        appendTo : '#J_page_fullellipsis',
+        totalPages : 30,
+        current : 6,
+        type : 'fullellipsis',
+        clsPrefix : 'ui-paging'
+    });
+
+    var custom = new Pager({
+        appendTo : '#J_page_custom',
+        totalPages : 30,
+        current : 6,
+        type : 'info-f-p-n-l-page',
         clsPrefix : 'ui-paging'
     });
 });

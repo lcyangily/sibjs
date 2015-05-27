@@ -3,6 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Slide demo</title>
+<link rel="stylesheet" href="../../css/normalize.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/960.css">
+<link rel="stylesheet" href="../../css/base.css">
 <style type="text/css">
 #slide-demo-1 {
     position: relative;
@@ -24,7 +28,7 @@
 #slide-demo-1 .ui-switchable-content .ui-switchable-panel img {
     margin-left: -660px;
 }
-#slide-demo-1 .ui-switchable-nav {
+.ui-switchable-nav {
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -33,7 +37,7 @@
     z-index: 99;
     font-size: 12px;
 }
-#slide-demo-1 .ui-switchable-nav .ui-switchable-trigger {
+.ui-switchable-nav .ui-switchable-trigger {
     float: left;
     width: 15px;
     height: 15px;
@@ -47,7 +51,7 @@
     cursor: pointer;
     list-style: none;
 }
-#slide-demo-1 .ui-switchable-nav .ui-switchable-active {
+.ui-switchable-nav .ui-switchable-active {
     color: #FFF;
     background-color: #e96c3e;
     opacity: 1;
@@ -63,56 +67,104 @@
 #slide-demo-2 .sib-slide-panel img {
     margin-left: -660px;
 }
+#slide-demo-2 .slide-panel{
+    overflow: hidden;
+}
+</style>
+<style type="text/css">
+#slide-demo-3{
+    height : 200px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    position: relative;
+}
+#slide-demo-3 .sib-slide-panel img {
+    margin-left: -660px;
+}
+#slide-demo-3 .slide-panel{
+    overflow: hidden;
+}
+#slide-demo-3 .sib-slide-content{
+    padding:0px;
+}
 </style>
 </head>
 
 <body>
-<div id="slide-demo-1" class="slide-demo ui-switchable" data-widget-cid="widget-5">
-    <ul class="ui-switchable-content" data-switchable-role="content" style="position: relative;">
-        <li class="ui-switchable-panel" style="">
-            <a href="#"><img src="./images/slide_1.jpg"></a>
-        </li>
-        <li class="hidden ui-switchable-panel" style="display: list-item;">
-            <a href="#"><img src="./images/slide_2.jpg"></a>
-        </li>
-        <li class="hidden ui-switchable-panel" style="display: list-item;">
-            <a href="#"><img src="./images/slide_3.jpg"></a>
-        </li>
-    </ul>
-    <ul class="ui-switchable-nav">
-        <li class="ui-switchable-trigger">1</li>
-        <li class="ui-switchable-trigger">2</li>
-        <li class="ui-switchable-trigger ui-switchable-active">3</li>
-    </ul>
+<div class="container_12">
+    <h1>
+        <a class="index" href="#">Slide</a>
+        <span>Demo</span>
+        <a href="../../api/stepbar.html">api>></a>
+    </h1>
+    <hr>
 </div>
-
-<div id="slide-demo-2">
-    <ul class="slide-content" data-switchable-role="content" style="position: relative;">
-        <li class="slide-panel" style="float: left; height:200px;">
-            <a href="#"><img src="./images/slide_1.jpg"></a>
-        </li>
-        <li class="slide-panel" style="display: list-item; float: left;">
-            <a href="#"><img src="./images/slide_2.jpg"></a>
-        </li>
-        <li class="slide-panel" style="display: list-item; float: left;">
-            <a href="#"><img src="./images/slide_3.jpg"></a>
-        </li>
-    </ul>
-    <ul class="slide-nav">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-    </ul>
+<div class="container_12">
+    <div id="slide-demo-1" class="slide-demo ui-switchable" data-widget-cid="widget-5">
+        <ul class="ui-switchable-content" data-switchable-role="content" style="position: relative;">
+            <li class="ui-switchable-panel" style="">
+                <a href="#"><img src="./images/slide_1.jpg"></a>
+            </li>
+            <li class="ui-switchable-panel">
+                <a href="#"><img src="./images/slide_2.jpg"></a>
+            </li>
+            <li class="ui-switchable-panel">
+                <a href="#"><img src="./images/slide_3.jpg"></a>
+            </li>
+        </ul>
+        <ul class="ui-switchable-nav">
+            <li class="ui-switchable-trigger">1</li>
+            <li class="ui-switchable-trigger">2</li>
+            <li class="ui-switchable-trigger">3</li>
+        </ul>
+    </div>
+    <div id="slide-demo-2">
+        <ul class="slide-content" data-switchable-role="content" style="position: relative;">
+            <li class="slide-panel">
+                <a href="#"><img src="./images/slide_1.jpg"></a>
+            </li>
+            <li class="slide-panel">
+                <a href="#"><img src="./images/slide_2.jpg"></a>
+            </li>
+            <li class="slide-panel">
+                <a href="#"><img src="./images/slide_3.jpg"></a>
+            </li>
+        </ul>
+        <ul class="ui-switchable-nav">
+            <li class="ui-switchable-trigger">1</li>
+            <li class="ui-switchable-trigger">2</li>
+            <li class="ui-switchable-trigger">3</li>
+        </ul>
+    </div>
+    <div id="slide-demo-3">
+        <ul class="slide-content" data-switchable-role="content" style="position: relative;">
+            <li class="slide-panel">
+                <a href="#"><img src="./images/slide_1.jpg"></a>
+            </li>
+            <li class="slide-panel">
+                <a href="#"><img src="./images/slide_2.jpg"></a>
+            </li>
+            <li class="slide-panel">
+                <a href="#"><img src="./images/slide_3.jpg"></a>
+            </li>
+        </ul>
+        <ul class="ui-switchable-nav">
+            <li class="ui-switchable-trigger">1</li>
+            <li class="ui-switchable-trigger">2</li>
+            <li class="ui-switchable-trigger">3</li>
+        </ul>
+    </div>
 </div>
 </body>
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.min.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script type="text/javascript">
-require(['sib/core/1.0/jQuery+','sib/slide/1.0/Slide'], function($, Slide){
+require(['jquery','sib.slide'], function($, Slide){
     var c = new Slide({
         target : 'slide-demo-1',
         triggers : '.ui-switchable-trigger',
-        activeTriggerCls : 'ui-switchable-active',
+        triggerActiveCls : 'ui-switchable-active',
         panels : '.ui-switchable-panel',
         effect : 'scrolly',
         autoPlay : true,
@@ -123,6 +175,8 @@ require(['sib/core/1.0/jQuery+','sib/slide/1.0/Slide'], function($, Slide){
         effect : 'scrollx',
         circulate : true,
         autoPlay : true,
+        triggers : '.ui-switchable-trigger',
+        triggerActiveCls : 'ui-switchable-active',
         beforeChange : function(ev, param){
             console.debug('-----> before param.triggerIndex : ' + param.newVal.triggerIndex);
             console.debug('-----> before param.panelIndex   : ' + param.newVal.panelIndex);
@@ -136,6 +190,15 @@ require(['sib/core/1.0/jQuery+','sib/slide/1.0/Slide'], function($, Slide){
             console.debug('-----> after param.panelIndex   : ' + param.newVal.panelIndex);
         }/* ,
         bodyAutoSize : true */
+    });
+
+    var s3 = new Slide({
+        target : 'slide-demo-3',
+        effect : 'fade',
+        circulate : true,
+        autoPlay : true,
+        triggers : '.ui-switchable-trigger',
+        triggerActiveCls : 'ui-switchable-active'
     });
 });
 

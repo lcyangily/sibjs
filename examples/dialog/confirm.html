@@ -36,34 +36,24 @@
     <li class="footer"></li>
 </ul>
 
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script>
 
-require(['sib/core/1.0/jQuery+', 'sib/dialog/1.0/Dialog'], function($, Dialog){
-    /*var d1 = new Dialog({
-        title : '你好',
-        content : 'World!!!',
-        modal : true
-    });
+require(['jquery', 'sib.dialog'], function($, Dialog){
 
-    d1.open();*/
     Dialog.alert('this is alert  asdfasdfasdfasdfas dfadsfas dfadfadsfas dfad fda!!!', function(){
         alert('alert click after ... ');
     });
 
-    Dialog.confirm('this is confirm');
-
-    Dialog.tip('this is Tip!!!', 1000);
-
-
-    /*Dialog.confirm('this is confirm !!!', 'title', function(){
+    Dialog.confirm('this is confirm', function(){
         alert('点击了确定');
     }, function(){
         alert('点击了取消');
-    });*/
+    });
 
-    //Dialog.tip('操作成功...');
+    Dialog.tip('this is Tip!!!', 3000);
 });
 </script>
 </body>

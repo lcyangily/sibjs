@@ -55,29 +55,18 @@
     }
 </style>
 <h1 style="font-size:22px;">
-    Pin
+    Placeholder
 </h1>
-<div id="pinContainer" style="height: 900px;border:1px solid red;">
-    <ul class="sib-page-nav" id="myNav">
-	    <!-- <li><a href="#">回到顶部（锚点）</a></li> -->
-	    <li class="header">快速直达</li>
-	    <li><a href="#box1">天猫电器城服务</a></li>
-	    <li><a href="#box2">优惠信息</a></li>
-	    <li><a href="#box3">关联推荐</a></li>
-	    <li><a href="#box4">商品参数</a></li>
-	    <li><a href="#box5">使用建议</a></li>
-	    <li><a href="#box6">店铺服务详情</a></li>
-	    <li><a href="#box7">常见问题</a></li>
-	    <li class="footer"></li>
-	</ul>
+<div id="pinContainer" style="height: 900px;">
 	<input type="text" id="ph" placeholder="hello,my girl!" />
 </div>
 <div style="width:100%;height:900px;background: #aaa"></div>
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script>
 
-require(['sib/core/1.0/jQuery+', 'sib/placeholder/1.0/Placeholder'], function($, Placeholder){
+require(['jquery', 'sib.placeholder'], function($, Placeholder){
     var p = new Placeholder({
         target : '#ph'
     });

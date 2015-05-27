@@ -35,11 +35,12 @@
     <li class="footer"></li>
 </ul>
 
-<script type="text/javascript" src="../../js/requirejs/require.js"></script>
-<script type="text/javascript" src="../../js/requirejs/require-config.js"></script>
+<link rel="stylesheet" href="../../sib/theme/index.css">
+<script type="text/javascript" src="../../requirejs/require.js"></script>
+<script type="text/javascript" src="../../requirejs/require-config.js"></script>
 <script>
 
-require(['sib/core/1.0/jQuery+', 'sib/dialog/1.0/Dialog'], function($, Dialog){
+require(['jquery', 'sib.dialog'], function($, Dialog){
     var d1 = new Dialog({
         title : '你好',
         content : 'World!!!',
@@ -80,8 +81,9 @@ require(['sib/core/1.0/jQuery+', 'sib/dialog/1.0/Dialog'], function($, Dialog){
     
     var d5 = new Dialog({
         title : '你好',
-        content : '../PageSidebar.html',
+        content : './confirm.html',
         height : 500,
+        width : 800,
         position : {
             my : 'center center',
             at : 'center+80 center+80',
